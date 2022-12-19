@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('role')->default('member');
             $table->timestamp('date_joined');
+            $table->rememberToken();
         });
     }
 

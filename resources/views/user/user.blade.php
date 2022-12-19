@@ -8,5 +8,8 @@
 </head>
 <body>
     <h1>User Page</h1>
+    <form action="/logout" method="get">
+        <input type="submit" value="LOGOUT">
+    </form>
 </body>
 </html>

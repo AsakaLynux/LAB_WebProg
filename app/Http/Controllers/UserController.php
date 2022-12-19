@@ -21,12 +21,19 @@ class UserController extends Controller
         ]);
 
 
+
+
         $time = Carbon::now()->format('Y-m-d');
 
         $user = new User();
+        $user->username = $validateData['username'];
+        $user->email = $validateData['email'];
+        $user->password = $validateData['password'];
+
+
         $user->username = $request->username;
         $user->email = $request->email;
-        $user->password = $request->password;
+        $user->password = bcrypt($request->password);
         $user->date_joined = $time;
 
         $user->save();
@@ -34,15 +41,31 @@ class UserController extends Controller
     }
 
     public function login(Request $request) {
+
+        $validateData = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|alpha_num|min:6',
+        ]);
+
+        $user = new User();
+        $user->email = $validateData['email'];
+        $user->password = $validateData['password'];
+
+
         if(Auth::attempt(['email'=>$request->email, 'password'=>$request->password], true)) {
-            // Session::put('mySession', [
-            //     'email'=>$request->email,
-            //     'password'=>$request->password,
-            //     ]
-            // );
+            Session::put('mySession', [
+                'email'=>$request->email,
+                'password'=>$request->password]
+            );
+            if(Auth::user()->role == 'admin') {
+                return view('admin.admin');
+            }
+
             return view('user.user');
         }
         return 'fail';
+
+
     }
 
     public function logout() {

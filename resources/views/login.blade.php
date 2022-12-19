@@ -8,6 +8,16 @@
 </head>
 <body>
     <h1>Login</h1>
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul class="mb-0">
+            @foreach ($errors->all() as $error)
+                <li>{{$error}}</li>
+            @endforeach
+        </ul>
+    </div>
+
+@endif
     <form action="/login" method="POST">
         @csrf
         <input type="email" name="email" placeholder="email" id="email">
