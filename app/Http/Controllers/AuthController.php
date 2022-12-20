@@ -6,9 +6,10 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
 
-class UserController extends Controller
+class AuthController extends Controller
 {
     //
 
@@ -51,19 +52,23 @@ class UserController extends Controller
         $user->email = $validateData['email'];
         $user->password = $validateData['password'];
 
+        if($request->Remember) {
+            Cookie::queue('myCookie', $request->email, 5);
+        }
 
         if(Auth::attempt(['email'=>$request->email, 'password'=>$request->password], true)) {
-            Session::put('mySession', [
-                'email'=>$request->email,
-                'password'=>$request->password]
-            );
+            // Session::put('mySession', [
+            //     'email'=>$request->email,
+            //     'password'=>$request->password]
+            // );
             if(Auth::user()->role == 'admin') {
                 return view('admin.admin');
             }
 
             return view('user.user');
         }
-        return 'fail';
+
+        return redirect()->back();
 
 
     }
