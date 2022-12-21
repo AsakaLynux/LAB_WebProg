@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MovieController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,12 +17,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-
-
-
-Route::get('/user', function () {
-    return view('user.user');
-});
+// Route::get('/user', function () {
+//     return view('user.user');
+// });
 
 Route::get('/', function () {
     return view('register');
@@ -44,4 +42,4 @@ Route::post('create-movie', [MovieController::class, 'create']);
 
 
 Route::get('/admin', [AuthController::class, 'admin'])->middleware('securityAdmin');
-Route::get('/user', [AuthController::class, 'admin'])->middleware('securityUser');
+Route::get('/user', [UserController::class, 'get_movie'])->middleware('securityUser');

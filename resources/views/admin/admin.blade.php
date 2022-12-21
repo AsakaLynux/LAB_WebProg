@@ -9,5 +9,10 @@
 <body>
     <h1>Admin Page</h1>
     <a href="./create-movie">Create</a>
+
+
+    <form action="/logout" method="get">
+        <input type="submit" value="LOGOUT">
+    </form>
 </body>
 </html>

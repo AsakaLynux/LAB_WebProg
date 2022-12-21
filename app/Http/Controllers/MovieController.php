@@ -39,10 +39,12 @@ class MovieController extends Controller
         $fileThumbnail = $request->file('image_thumbnail');
         $imageNameThumbnail = $request->title.'_thumbnail'.'.'.$fileThumbnail->getClientOriginalExtension();
         Storage::putFileAs('public/images', $fileThumbnail, $imageNameThumbnail);
+        $imageNameThumbnail = 'storage/images/'.$imageNameThumbnail;
 
         $filebackground = $request->file('background');
         $imageNameBackground = $request->title.'_background'.'.'.$filebackground->getClientOriginalExtension();
         Storage::putFileAs('public/images', $filebackground, $imageNameBackground);
+        $imageNameBackground = 'storage/images/'.$imageNameBackground;
 
         $movie->title = $request->title;
         $movie->description = $request->description;
@@ -56,7 +58,7 @@ class MovieController extends Controller
 
         $movie->save();
 
-        return redirect()->back();
+        return redirect('/admin');
 
     }
 }
