@@ -8,5 +8,6 @@
 </head>
 <body>
     <h1>Admin Page</h1>
+    <a href="./create-movie">Create</a>
 </body>
 </html>

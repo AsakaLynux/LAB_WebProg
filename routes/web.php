@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MovieController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,6 +34,13 @@ Route::get('/login', function () {
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::get('/logout', [AuthController::class, 'logout']);
+
+
+
+Route::get('/create-movie', function () {
+    return view('admin.create-movie');
+});
+Route::post('create-movie', [MovieController::class, 'create']);
 
 
 Route::get('/admin', [AuthController::class, 'admin'])->middleware('securityAdmin');
