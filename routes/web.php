@@ -43,3 +43,6 @@ Route::post('create-movie', [MovieController::class, 'create']);
 
 Route::get('/admin', [AuthController::class, 'admin'])->middleware('securityAdmin');
 Route::get('/user', [UserController::class, 'get_movie'])->middleware('securityUser');
+
+
+Route::get('/detail-movie/{id}', [UserController::class, 'get_movie_by_id']);
