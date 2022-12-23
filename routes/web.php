@@ -53,3 +53,4 @@ Route::get('/user', [UserController::class, 'get_movie'])->middleware('securityU
 
 
 Route::get('/detail-movie/{id}', [UserController::class, 'get_movie_by_id']);
+Route::get('/detail-movies/{id}', [AdminController::class, 'get_movie_by_id']);
