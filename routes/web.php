@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\UserController;
@@ -38,10 +39,16 @@ Route::get('/logout', [AuthController::class, 'logout']);
 Route::get('/create-movie', function () {
     return view('admin.create-movie');
 });
-Route::post('create-movie', [MovieController::class, 'create']);
+Route::post('/create-movie', [MovieController::class, 'create']);
+
+Route::get('/update-movie', function () {
+    return view('admin.update-movie');
+});
+
+Route::post('/update-movie', [MovieController::class, 'update']);
 
 
-Route::get('/admin', [AuthController::class, 'admin'])->middleware('securityAdmin');
+Route::get('/admin', [AdminController::class, 'get_movie'])->middleware('securityAdmin');
 Route::get('/user', [UserController::class, 'get_movie'])->middleware('securityUser');
 
 

@@ -25,6 +25,7 @@
         <a href={{ url('/detail-movie/'.$movie->id) }}><h2>{{$movie->title}}</h2></a>
         <img width="200px" height="200px" src="{{$movie->background}}" alt="">
         <img width="200px" height="200px" src="{{$movie->image_thumbnail}}" alt="">
+
     @endforeach
 
 

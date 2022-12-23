@@ -9,9 +9,14 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Inser Movie</h1>
-    <form action="/create-movie" enctype="multipart/form-data" method="POST">
+    <h1>Edit Page</h1>
+
+    <h1>Edit Movie</h1>
+    <form action="/update-movie" enctype="multipart/form-data" method="POST">
         @csrf
+        <label for="id">Input Movie ID</label>
+        <input type="text" name="id_update">
+
         <label for="title">Title</label>
         <input type="text" name="title">
 

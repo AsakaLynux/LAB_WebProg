@@ -61,4 +61,43 @@ class MovieController extends Controller
         return redirect('/admin');
 
     }
+
+    public function update(Request $request) {
+        $fileThumbnail = $request->file('image_thumbnail');
+        $filebackground = $request->file('background');
+
+        $movie = Movie::find($request->id_update);
+
+        if($fileThumbnail != null) {
+            $imageNameThumbnail = $request->title.'_thumbnail'.'.'.$fileThumbnail->getClientOriginalExtension();
+            Storage::putFileAs('public/images', $fileThumbnail, $imageNameThumbnail);
+            $imageNameThumbnail = 'storage/images/'.$imageNameThumbnail;
+
+            Storage::delete('public/images/'.$movie->image_thumbnail);
+            $movie->image_thumbnail = $imageNameThumbnail;
+        }
+
+        if($filebackground != null) {
+            $imageNameBackground = $request->title.'_background'.'.'.$filebackground->getClientOriginalExtension();
+            Storage::putFileAs('public/images', $filebackground, $imageNameBackground);
+            $imageNameBackground = 'storage/images/'.$imageNameBackground;
+
+            Storage::delete('public/images/'.$movie->background);
+            $movie->background = $imageNameBackground;
+        }
+
+
+        $movie->title = $request->title != null ? $request->title : $movie->title;
+        $movie->description = $request->description != null ? $request->description : $movie->description;
+        $movie->genre = $request->genre != null ? $request->genre : $movie->genre;
+        $movie->actor = $request->actor != null ? $request->actor : $movie->actor;
+        $movie->character_name = $request->character_name != null ? $request->character_name : $movie->character_name;
+        $movie->director = $request->director != null ? $request->director : $movie->director;
+        $movie->release_date = $request->release_date != null ? $request->release_date : $movie->release_date;
+
+
+        $movie->save();
+
+        return redirect('/admin');
+    }
 }
