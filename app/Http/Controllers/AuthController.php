@@ -63,7 +63,7 @@ class AuthController extends Controller
             //     'password'=>$request->password]
             // );
             if(Auth::user()->role == 'admin') {
-                return view('admin.home');
+                return redirect('/admin');
             }
             // $movie = Movie::all();
             return redirect('/user');
