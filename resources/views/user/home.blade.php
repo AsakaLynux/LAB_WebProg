@@ -22,16 +22,18 @@
 
     @foreach ($movies as $movie)
         <h2>{{$movie->id}}</h2>
-        <a href={{ url('/detail-movie/'.$movie->id) }}><h2>{{$movie->title}}</h2></a>
+        <a href="{{ url('/detail-movie/'.$movie->id) }}"><h2>{{$movie->title}}</h2></a>
         <img width="200px" height="200px" src="{{$movie->background}}" alt="">
         <img width="200px" height="200px" src="{{$movie->image_thumbnail}}" alt="">
 
     @endforeach
 
-
+    {{-- <h1>{{$user->id}}</h1> --}}
 
     <form action="/logout" method="get">
         <input type="submit" value="LOGOUT">
     </form>
+
+    {{-- <a href="{{ url('/profile/'.$user->id) }}">Profile</a> --}}
 </body>
 </html>

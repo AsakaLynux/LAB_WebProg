@@ -22,6 +22,8 @@ use Illuminate\Support\Facades\Route;
 //     return view('user.user');
 // });
 
+
+// Auth
 Route::get('/', function () {
     return view('register');
 });
@@ -34,8 +36,16 @@ Route::post('/login', [AuthController::class, 'login']);
 
 Route::get('/logout', [AuthController::class, 'logout']);
 
+// User
+Route::get('/user', [UserController::class, 'get'])->middleware('securityUser');
+
+Route::get('/detail-movie/{id}', [UserController::class, 'get_movie_by_id']);
+Route::get('/profile/{id}', function() {
+    return view('user.profile');
+});
 
 
+// Admin
 Route::get('/create-movie', function () {
     return view('admin.create-movie');
 });
@@ -46,11 +56,14 @@ Route::get('/update-movie', function () {
 });
 
 Route::post('/update-movie', [MovieController::class, 'update']);
-
-
 Route::get('/admin', [AdminController::class, 'get_movie'])->middleware('securityAdmin');
-Route::get('/user', [UserController::class, 'get_movie'])->middleware('securityUser');
-
-
-Route::get('/detail-movie/{id}', [UserController::class, 'get_movie_by_id']);
 Route::get('/detail-movies/{id}', [AdminController::class, 'get_movie_by_id']);
+
+// Guest
+
+
+
+
+
+
+

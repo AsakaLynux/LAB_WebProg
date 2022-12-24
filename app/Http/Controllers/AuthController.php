@@ -22,9 +22,6 @@ class AuthController extends Controller
             // 'password' => 'required|alpha_num|min:6|confirmed',
         ]);
 
-
-
-
         $time = Carbon::now()->format('Y-m-d');
 
         $user = new User();
@@ -58,19 +55,14 @@ class AuthController extends Controller
         }
 
         if(Auth::attempt(['email'=>$request->email, 'password'=>$request->password], true)) {
-            // Session::put('mySession', [
-            //     'email'=>$request->email,
-            //     'password'=>$request->password]
-            // );
             if(Auth::user()->role == 'admin') {
                 return redirect('/admin');
             }
-            // $movie = Movie::all();
+
             return redirect('/user');
         }
 
         return redirect()->back();
-
 
     }
 
