@@ -38,13 +38,13 @@ class MovieController extends Controller
         // Insert
         $fileThumbnail = $request->file('image_thumbnail');
         $imageNameThumbnail = $request->title.'_thumbnail'.'.'.$fileThumbnail->getClientOriginalExtension();
-        Storage::putFileAs('public/images', $fileThumbnail, $imageNameThumbnail);
-        $imageNameThumbnail = 'storage/images/'.$imageNameThumbnail;
+        Storage::putFileAs('public/images/movie/thumbnail/', $fileThumbnail, $imageNameThumbnail);
+        $imageNameThumbnail = 'storage/images/movie/thumbnail/'.$imageNameThumbnail;
 
         $filebackground = $request->file('background');
         $imageNameBackground = $request->title.'_background'.'.'.$filebackground->getClientOriginalExtension();
-        Storage::putFileAs('public/images', $filebackground, $imageNameBackground);
-        $imageNameBackground = 'storage/images/'.$imageNameBackground;
+        Storage::putFileAs('public/images/movie/background/', $filebackground, $imageNameBackground);
+        $imageNameBackground = 'storage/images/movie/background/'.$imageNameBackground;
 
         $movie->title = $request->title;
         $movie->description = $request->description;
@@ -70,19 +70,19 @@ class MovieController extends Controller
 
         if($fileThumbnail != null) {
             $imageNameThumbnail = $request->title.'_thumbnail'.'.'.$fileThumbnail->getClientOriginalExtension();
-            Storage::putFileAs('public/images', $fileThumbnail, $imageNameThumbnail);
-            $imageNameThumbnail = 'storage/images/'.$imageNameThumbnail;
+            Storage::putFileAs('public/images/movie/thumbnail/', $fileThumbnail, $imageNameThumbnail);
+            $imageNameThumbnail = 'storage/images/movie/thumbnail/'.$imageNameThumbnail;
 
-            Storage::delete('public/images/'.$movie->image_thumbnail);
+            Storage::delete('public/images/movie/thumbnail/'.$movie->image_thumbnail);
             $movie->image_thumbnail = $imageNameThumbnail;
         }
 
         if($filebackground != null) {
             $imageNameBackground = $request->title.'_background'.'.'.$filebackground->getClientOriginalExtension();
-            Storage::putFileAs('public/images', $filebackground, $imageNameBackground);
-            $imageNameBackground = 'storage/images/'.$imageNameBackground;
+            Storage::putFileAs('public/images/movie/background/', $filebackground, $imageNameBackground);
+            $imageNameBackground = 'storage/images/movie/background/'.$imageNameBackground;
 
-            Storage::delete('public/images/'.$movie->background);
+            Storage::delete('public/images/movie/background/'.$movie->background);
             $movie->background = $imageNameBackground;
         }
 
