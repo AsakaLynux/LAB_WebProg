@@ -48,20 +48,25 @@ Route::get('/profile/{id}', function() {
 
 // Admin
 Route::get('/admin', [AdminController::class, 'get'])->middleware('securityAdmin');
+
+// Movie
 Route::post('/create-movie', [MovieController::class, 'create']);
-
-Route::get('/create-actor', function() {
-    return view('admin.create-actor');
-});
-
-Route::post('/create-actor', [ActorController::class, 'create']);
-
 Route::post('/update-movie', [MovieController::class, 'update']);
 Route::get('/update-movie', function () {
     return view('admin.update-movie');
 });
-
 Route::get('/detail-movies/{id}', [AdminController::class, 'get_movie_by_id']);
+// Actor
+Route::get('/create-actor', function() {
+    return view('admin.create-actor');
+});
+Route::post('/create-actor', [ActorController::class, 'create']);
+Route::get('/update-actor', function() {
+    return view('admin.update-actor');
+});
+Route::post('/update-actor', [ActorController::class, 'update']);
+
+
 Route::get('/detail-actors/{id}', [AdminController::class, 'get_actor_by_id']);
 
 // Guest

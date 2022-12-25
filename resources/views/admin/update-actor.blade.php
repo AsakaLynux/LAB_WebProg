@@ -9,12 +9,12 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Edit Page</h1>
-
     <h1>Edit Actor</h1>
-    <h1>Insert Actor</h1>
     <form action="/update-actor" enctype="multipart/form-data" method="POST">
         @csrf
+        <label for="id">Input Actor ID</label>
+        <input type="text" name="id_update">
+
         <label for="name">Name</label>
         <input type="text" name="name">
 
