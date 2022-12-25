@@ -64,7 +64,39 @@
         </table>
     </div>
 
+    <h1>Actor List</h1>
 
+    <div class="table">
+        <table>
+            <thead>
+                <th>Actor ID</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Biography</th>
+                <th>Date of Birth</th>
+                <th>Place of Birth</th>
+                <th>popularity</th>
+                <th>Image</th>
+            </thead>
+            <tbody>
+                @foreach ($actors as $actor)
+                   <tr>
+                        <td>{{$actor->id}}</td>
+                        <td>{{$actor->name}}</td>
+                        <td>{{$actor->gender}}</td>
+                        <td>{{$actor->biography}}</td>
+                        <td>{{$actor->place_of_birth}}</td>
+                        <td>{{$actor->popularity}}</td>
+                        <td><img width="200px" height="200px" src="{{$actor->image_url}}" alt=""></td>
+                        <td>
+                            <a href="{{ url('/detail-actors/'.$actor->id) }}">Detail</a>
+                        </td>
+                   </tr>
+                @endforeach
+
+            </tbody>
+        </table>
+    </div>
     <form action="/logout" method="get">
         <input type="submit" value="LOGOUT">
     </form>

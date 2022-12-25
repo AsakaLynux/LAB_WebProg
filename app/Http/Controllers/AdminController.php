@@ -8,9 +8,13 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function get_movie() {
+    public function get() {
         $movie = Movie::all();
-        return view('admin.home', ['movies' => $movie]);
+        $actor = Actor::all();
+        return view('admin.home')->with([
+            'movies' => $movie,
+            'actors' => $actor
+        ]);
     }
 
     public function get_movie_by_id($id) {
@@ -18,8 +22,9 @@ class AdminController extends Controller
         return view('admin.detail-movie', ['movies' => $movie]);
     }
 
-    public function get_actor() {
-        $actor = Actor::all();
-        return view('admin.create-actor', ['actor' => $actor]);
+    public function get_actor_by_id($id) {
+        $actor = Actor::find($id);
+        return view('admin.detail-actor', ['actor' => $actor]);
     }
+
 }

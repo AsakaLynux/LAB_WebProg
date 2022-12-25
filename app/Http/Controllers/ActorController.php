@@ -44,7 +44,48 @@ class ActorController extends Controller
         $actor->save();
 
         return redirect('/admin');
+    }
 
+    public function update(Request $request) {
+        $fileActor = $request->file('image');
+        $actor = Actor::find($request->id);
 
+        $validateData = $request->validate([
+            'name'=> 'required|min:3',
+            'biography' => 'required|min:10',
+            'image' => 'required|mimes:jpeg,jpg,png,gif',
+            'place_of_birth' => 'required',
+            'dob' => 'required',
+            'gender' => 'required',
+            'popularity' => 'required|numeric',
+        ]);
+
+        $actor->name = $validateData['name'];
+        $actor->biography = $validateData['biography'];
+        $actor->image_url = $validateData['image'];
+        $actor->place_of_birth = $validateData['place_of_birth'];
+        $actor->dob = $validateData['dob'];
+        $actor->gender = $validateData['gender'];
+        $actor->popularity = $validateData['popularity'];
+
+        if($fileActor != null) {
+            $imageNameActor = $request->name.'.'.$fileActor->getClientOriginalExtension();
+            Storage::putFileAs('public/images/actor/', $fileActor, $imageNameActor);
+            $imageNameActor = 'storage/images/actor/'.$imageNameActor;
+
+            Storage::delete('public/images/movie/thumbnail/'.$actor->image_url);
+            $actor->image_thumbnail = $imageNameActor;
+        }
+
+        $actor->name = $request->name != null ? $request->name : $actor->name;
+        $actor->biography = $request->biography != null ? $request->biography : $actor->biography;
+        $actor->place_of_birth = $request->place_of_birth != null ? $request->place_of_birth : $actor->place_of_birth;
+        $actor->dob = $request->actor != null ? $request->actor : $actor->actor;
+        $actor->gender = $request->gender != null ? $request->gender : $actor->gender;
+        $actor->popularity = $request->popularity != null ? $request->popularity : $actor->popularity;
+
+        $actor->save();
+
+        return redirect('/admin');
     }
 }
