@@ -18,8 +18,10 @@ class AuthController extends Controller
         $validateData = $request->validate([
             'username' => 'required|min:5',
             'email' => 'required|email',
-            'password' => 'required|alpha_num|min:6',
-            // 'password' => 'required|alpha_num|min:6|confirmed',
+            // 'password' => 'required|alpha_num|min:6',
+            'password' => 'required|alpha_num|confirmed|min:6',
+
+
         ]);
 
         $time = Carbon::now()->format('Y-m-d');
