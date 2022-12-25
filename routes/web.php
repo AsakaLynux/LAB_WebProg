@@ -47,12 +47,8 @@ Route::get('/profile/{id}', function() {
 
 
 // Admin
-Route::get('/create-movie', [AdminController::class, 'get_movie']);
+Route::get('/admin', [AdminController::class, 'get_movie'])->middleware('securityAdmin');
 Route::post('/create-movie', [MovieController::class, 'create']);
-
-Route::get('/update-movie', function () {
-    return view('admin.update-movie');
-});
 
 Route::get('/create-actor', function() {
     return view('admin.create-actor');
@@ -61,9 +57,10 @@ Route::get('/create-actor', function() {
 Route::post('/create-actor', [ActorController::class, 'create']);
 
 Route::post('/update-movie', [MovieController::class, 'update']);
-Route::get('/admin', function() {
-    return view('admin.home');
-})->middleware('securityAdmin');
+Route::get('/update-movie', function () {
+    return view('admin.update-movie');
+});
+
 Route::get('/detail-movies/{id}', [AdminController::class, 'get_movie_by_id']);
 
 // Guest
