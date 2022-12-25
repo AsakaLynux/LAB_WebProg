@@ -8,8 +8,9 @@
 </head>
 <body>
     <h1>Admin Page</h1>
-    <a href="/create-movie">Create</a>
-    <a href="/update-movie">Update</a>
+    <a href="/create-movie">Create Movie</a>
+    <a href="/update-movie">Update Movie</a>
+    <a href="/create-actor">Create Actor</a>
 
     <h1>Movie List</h1>
 

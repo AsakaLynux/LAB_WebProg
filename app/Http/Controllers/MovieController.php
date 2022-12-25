@@ -41,9 +41,9 @@ class MovieController extends Controller
         Storage::putFileAs('public/images/movie/thumbnail/', $fileThumbnail, $imageNameThumbnail);
         $imageNameThumbnail = 'storage/images/movie/thumbnail/'.$imageNameThumbnail;
 
-        $filebackground = $request->file('background');
-        $imageNameBackground = $request->title.'_background'.'.'.$filebackground->getClientOriginalExtension();
-        Storage::putFileAs('public/images/movie/background/', $filebackground, $imageNameBackground);
+        $fileBackground = $request->file('background');
+        $imageNameBackground = $request->title.'_background'.'.'.$fileBackground->getClientOriginalExtension();
+        Storage::putFileAs('public/images/movie/background/', $fileBackground, $imageNameBackground);
         $imageNameBackground = 'storage/images/movie/background/'.$imageNameBackground;
 
         $movie->title = $request->title;
@@ -64,7 +64,7 @@ class MovieController extends Controller
 
     public function update(Request $request) {
         $fileThumbnail = $request->file('image_thumbnail');
-        $filebackground = $request->file('background');
+        $fileBackground = $request->file('background');
 
         $movie = Movie::find($request->id_update);
 
@@ -77,9 +77,9 @@ class MovieController extends Controller
             $movie->image_thumbnail = $imageNameThumbnail;
         }
 
-        if($filebackground != null) {
-            $imageNameBackground = $request->title.'_background'.'.'.$filebackground->getClientOriginalExtension();
-            Storage::putFileAs('public/images/movie/background/', $filebackground, $imageNameBackground);
+        if($fileBackground != null) {
+            $imageNameBackground = $request->title.'_background'.'.'.$fileBackground->getClientOriginalExtension();
+            Storage::putFileAs('public/images/movie/background/', $fileBackground, $imageNameBackground);
             $imageNameBackground = 'storage/images/movie/background/'.$imageNameBackground;
 
             Storage::delete('public/images/movie/background/'.$movie->background);

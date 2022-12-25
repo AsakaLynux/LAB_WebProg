@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActorController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MovieController;
@@ -54,6 +55,12 @@ Route::post('/create-movie', [MovieController::class, 'create']);
 Route::get('/update-movie', function () {
     return view('admin.update-movie');
 });
+
+Route::get('/create-actor', function() {
+    return view('admin.create-actor');
+});
+
+Route::post('/create-actor', [ActorController::class, 'create']);
 
 Route::post('/update-movie', [MovieController::class, 'update']);
 Route::get('/admin', [AdminController::class, 'get_movie'])->middleware('securityAdmin');
