@@ -20,7 +20,6 @@
 <body>
     <h1>Admin Page</h1>
     <br><a href="/create-movie">Create Movie</a>
-    <br><a href="/update-movie">Update Movie</a>
     <br><a href="/create-actor">Create Actor</a>
     <br><a href="/update-actor">Update Actor</a>
 

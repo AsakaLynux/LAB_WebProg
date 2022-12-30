@@ -7,6 +7,8 @@
     <title>Document</title>
 </head>
 <body>
+    <a href="/admin">< Back</a>
+    <h2>{{$movies->id}}</h2>
     <h2>{{$movies->title}}</h2>
     <h2>{{$movies->description}}</h2>
     <h2>{{$movies->genre}}</h2>
@@ -18,6 +20,6 @@
     <img width="200px" height="200px" src="../{{$movies->background}}" alt="">
 
 
-
+    <br><a href="{{ url('/update-movie/'. $movies->id) }}">Update Movie</a>
 </body>
 </html>

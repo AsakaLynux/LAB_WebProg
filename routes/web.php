@@ -52,10 +52,9 @@ Route::get('/admin', [AdminController::class, 'get'])->middleware('securityAdmin
 // Movie
 Route::post('/create-movie', [MovieController::class, 'create']);
 Route::post('/update-movie', [MovieController::class, 'update']);
-Route::get('/update-movie', function () {
-    return view('admin.update-movie');
-});
+Route::get('/update-movie/{id}', [MovieController::class, 'get_movie_by_id']);
 Route::get('/detail-movies/{id}', [AdminController::class, 'get_movie_by_id']);
+
 // Actor
 Route::get('/create-actor', function() {
     return view('admin.create-actor');

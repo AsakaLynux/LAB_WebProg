@@ -67,30 +67,7 @@ class MovieController extends Controller
         $fileBackground = $request->file('background');
 
         $movie = Movie::find($request->id_update);
-        $validateData = $request->validate([
-            'title' => 'required|min:2|max:50',
-            'description' => 'required|min:8',
-            'director' => 'required|min:3',
-            'release_date' => 'required',
-            'image_thumbnail' => 'required|mimes:jpeg,jpg,png,gif',
-            'background' => 'required|mimes:jpeg,jpg,png,gif',
-            'character_name' => 'required',
-            'genre' => 'required',
-            'actor' => 'required',
-        ]);
 
-
-
-        // Validasi
-        $movie->title = $validateData['title'];
-        $movie->description = $validateData['description'];
-        $movie->genre = $validateData['genre'];
-        $movie->actor = $validateData['actor'];
-        $movie->character_name = $validateData['character_name'];
-        $movie->director = $validateData['director'];
-        $movie->release_date = $validateData['release_date'];
-        $movie->image_thumbnail = $validateData['image_thumbnail'];
-        $movie->background = $validateData['background'];
         if($fileThumbnail != null) {
             $imageNameThumbnail = $request->title.'_thumbnail'.'.'.$fileThumbnail->getClientOriginalExtension();
             Storage::putFileAs('public/images/movie/thumbnail/', $fileThumbnail, $imageNameThumbnail);
@@ -121,6 +98,11 @@ class MovieController extends Controller
 
         $movie->save();
 
-        return redirect('/admin');
+        return redirect("/detail-movies/$request->id_update");
+    }
+
+    public function get_movie_by_id($id) {
+        $movie = Movie::find($id);
+        return view('admin.update-movie', ['movies' => $movie]);
     }
 }
