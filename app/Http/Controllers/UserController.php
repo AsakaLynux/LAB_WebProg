@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Movie;
 use App\Models\User;
+use App\Models\Actor;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -11,15 +12,22 @@ class UserController extends Controller
     public function get() {
         $movie = Movie::all();
         $user = User::all();
+        $actor = Actor::all();
         return view('user.home')->with([
             'movies' => $movie,
             'user' => $user,
+            'actor' => $actor,
         ]);
     }
 
     public function get_movie_by_id($id) {
         $movie = Movie::find($id);
         return view('user.detail-movie', ['movies' => $movie]);
+    }
+
+    public function get_actor_by_id($id) {
+        $actor = Actor::find($id);
+        return view('user.detail-actor', ['actor' => $actor]);
     }
 
     // public function update() {

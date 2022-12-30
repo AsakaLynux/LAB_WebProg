@@ -28,6 +28,15 @@
 
     @endforeach
 
+
+    <h1>Actor List</h1>
+    @foreach ($actor as $actor)
+        <h2>{{$actor->id}}</h2>
+        <a href="{{ url('/detail-actor/'.$actor->id) }}"><h2>{{$actor->name}}</h2></a>
+        <img width="200px" height="200px" src="{{$actor->image_url}}" alt="">
+
+
+    @endforeach
     {{-- <h1>{{$user->id}}</h1> --}}
 
     <form action="/logout" method="get">
