@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Actor;
 use App\Models\Movie;
 use App\Models\User;
 use Carbon\Carbon;
@@ -42,16 +43,23 @@ class AuthController extends Controller
     }
 
     public function login(Request $request) {
-
         $validateData = $request->validate([
             'email' => 'required|email',
             'password' => 'required|alpha_num|min:6',
         ]);
 
+
         $user = new User();
         $user->email = $validateData['email'];
         $user->password = $validateData['password'];
 
+        $users = User::query()
+        ->Where('email', 'LIKE', $request->email)
+        ->get();
+
+
+        // $users = User::find(1);
+        // dd($users);
         if($request->Remember) {
             Cookie::queue('myCookie', $request->email, 5);
         }
@@ -61,17 +69,25 @@ class AuthController extends Controller
                 return redirect('/admin');
             }
 
-            return redirect('/user');
+
+            $movie = Movie::all();
+            $actor = Actor::all();
+            return view('user.home')->with([
+                'movies' => $movie,
+                'user' => $users,
+                'actor' => $actor,
+            ]);
+
         }
 
         return redirect()->back();
 
     }
 
+
+
     public function logout() {
         Auth::logout();
         return redirect('/login');
     }
-
-
 }
