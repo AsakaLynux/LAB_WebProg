@@ -50,23 +50,6 @@ class ActorController extends Controller
         $fileActor = $request->file('image');
         $actor = Actor::find($request->id_update);
 
-        $validateData = $request->validate([
-            'name'=> 'required|min:3',
-            'biography' => 'required|min:10',
-            'image' => 'required|mimes:jpeg,jpg,png,gif',
-            'place_of_birth' => 'required',
-            'dob' => 'required',
-            'gender' => 'required',
-            'popularity' => 'required|numeric',
-        ]);
-
-        $actor->name = $validateData['name'];
-        $actor->biography = $validateData['biography'];
-        $actor->image_url = $validateData['image'];
-        $actor->place_of_birth = $validateData['place_of_birth'];
-        $actor->dob = $validateData['dob'];
-        $actor->gender = $validateData['gender'];
-        $actor->popularity = $validateData['popularity'];
 
         if($fileActor != null) {
             $imageNameActor = $request->name.'.'.$fileActor->getClientOriginalExtension();
@@ -86,6 +69,10 @@ class ActorController extends Controller
 
         $actor->save();
 
-        return redirect('/admin');
+        return redirect("/detail-actors/$request->id_update");
+    }
+    public function get_actor_by_id($id) {
+        $actor = Actor::find($id);
+        return view('admin.update-actor', ['actor' => $actor]);
     }
 }

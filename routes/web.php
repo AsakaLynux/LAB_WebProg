@@ -60,9 +60,7 @@ Route::get('/create-actor', function() {
     return view('admin.create-actor');
 });
 Route::post('/create-actor', [ActorController::class, 'create']);
-Route::get('/update-actor', function() {
-    return view('admin.update-actor');
-});
+Route::get('/update-actor/{id}', [ActorController::class, 'get_actor_by_id']);
 Route::post('/update-actor', [ActorController::class, 'update']);
 
 

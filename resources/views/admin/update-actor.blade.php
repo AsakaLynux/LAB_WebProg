@@ -12,29 +12,28 @@
     <h1>Edit Actor</h1>
     <form action="/update-actor" enctype="multipart/form-data" method="POST">
         @csrf
-        <label for="id">Input Actor ID</label>
-        <input type="text" name="id_update">
+        <input type="hidden" name="id_update" value="{{$actor->id}}">
 
         <label for="name">Name</label>
-        <input type="text" name="name">
+        <input type="text" name="name" placeholder="{{$actor->name}}">
 
         <label for="gender">Gender</label>
-        <input type="text" name="gender">
+        <input type="text" name="gender" placeholder="{{$actor->gender}}">
 
         <label for="biography">Biography</label>
-        <input type="text" name="biography">
+        <input type="text" name="biography" placeholder="{{$actor->biography}}">
 
         <label for="dob">Date of Birth</label>
         <input type="date" name="dob">
 
         <label for="place_of_birth">Place of Birth</label>
-        <input type="text" name="place_of_birth">
+        <input type="text" name="place_of_birth" placeholder="{{$actor->place_of_birth}}">
 
         <label for="insertImage">Image</label>
         <input type="file" id="insertImage" name="image">
 
         <label for="popularity">Popularity</label>
-        <input type="text" name="popularity">
+        <input type="text" name="popularity" placeholder="{{$actor->popularity}}">
 
         <input type="submit" value="Submit">
      </form>

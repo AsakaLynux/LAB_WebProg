@@ -12,7 +12,6 @@
     <h1>Edit Movie</h1>
     <form action="/update-movie" enctype="multipart/form-data" method="POST">
         @csrf
-        <label for="id">Input Movie ID</label>
         <input type="hidden" name="id_update" placeholder="{{$movies->id}}" value="{{$movies->id}}">
 
         <label for="title">Title</label>
