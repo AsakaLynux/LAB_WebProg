@@ -44,11 +44,12 @@
     </form>
 
     @foreach ($user as $user)
-        <h2>{{$user->username}}</h2>
+
         <h2>{{$user->id}}</h2>
-        <h2>{{$user->email}}</h2>
+
+        <a href="{{ url('/profile/'.$user->id) }}">Profile</a>
     @endforeach
 
-    {{-- <a href="{{ url('/profile/'.$user->id) }}">Profile</a> --}}
+
 </body>
 </html>

@@ -38,13 +38,13 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::get('/logout', [AuthController::class, 'logout']);
 
 // User
-Route::get('/user', [UserController::class, 'get'])->middleware('securityUser');
+Route::post('/user', [AuthController::class, 'get'])->middleware('securityUser');
 
 Route::get('/detail-movie/{id}', [UserController::class, 'get_movie_by_id']);
 Route::get('/detail-actor/{id}', [UserController::class, 'get_actor_by_id']);
-Route::get('/profile/{id}', function() {
-    return view('user.profile');
-});
+Route::get('/profile/{id}', [UserController::class, 'get_user_by_id']);
+Route::get('/update-profile/{id}', [AuthController::class, 'get_user_by_id']);
+Route::post('/update-profile', [AuthController::class, 'update_profile']);
 
 
 // Admin

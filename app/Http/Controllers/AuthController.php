@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 class AuthController extends Controller
 {
@@ -25,6 +26,8 @@ class AuthController extends Controller
 
         ]);
 
+
+
         $time = Carbon::now()->format('Y-m-d');
 
         $user = new User();
@@ -32,11 +35,24 @@ class AuthController extends Controller
         $user->email = $validateData['email'];
         $user->password = $validateData['password'];
 
+        // $fileProfile = $request->file('profile');
+        // $imageNameProfile = $request->name.$fileProfile->getClientOriginalExtension();
+        // Storage::putFileAs('public/images/user/', $fileProfile, $imageNameProfile);
+        // $imageNameProfile = 'storage/images/user/, '. $imageNameProfile;
+        $fileProfile = $request->image_url;
+        if($fileProfile != null) {
+            $imageNameProfile = $request->name.$fileProfile->getClientOriginalExtension();
+            Storage::putFileAs('public/images/user/', $fileProfile, $imageNameProfile);
+            $imageNameProfile = 'storage/images/user/, '. $imageNameProfile;
+            $user->image_url = $imageNameProfile;
+
+        }
 
         $user->username = $request->username;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
         $user->date_joined = $time;
+
 
         $user->save();
         return redirect('/login');
@@ -89,5 +105,51 @@ class AuthController extends Controller
     public function logout() {
         Auth::logout();
         return redirect('/login');
+    }
+
+    public function get_user_by_id($id) {
+        $user = User::find($id);
+        return view('user.update-profile', ['user' => $user]);
+    }
+
+    public function update_profile(Request $request) {
+        $fileProfile = $request->file('imageProfile');
+
+        $user = User::find($request->id_update);
+
+        if($fileProfile != null) {
+            $imageNameProfile = $request->name.$fileProfile->getClientOriginalExtension();
+            Storage::putFileAs('public/images/user/', $fileProfile, $imageNameProfile);
+            $imageNameProfile = 'storage/images/user/, '. $imageNameProfile;
+
+            Storage::delete('public/images/user/'.$user->image_url);
+            $user->image_thumbnail = $imageNameProfile;
+        }
+
+        $user->username = $request->username != null ? $request->username : $user->username;
+        $user->email = $request->email != null ? $request->email : $user->email;
+        $user->username = $request->username != null ? $request->username : $user->username;
+        $user->dob = $request->dob != null ? $request->dob : $user->dob;
+        $user->phone = $request->phone != null ? $request->phone : $user->phone;
+
+        $user->save();
+
+        return redirect("/profile/$request->id_update");
+
+
+    }
+
+    public function get(Request $request) {
+        $user = User::query()
+        ->Where('email', 'LIKE', $request->email)
+        ->get();
+        $movie = Movie::all();
+        // dd($user);
+        $actor = Actor::all();
+        return view('user.home')->with([
+            'movies' => $movie,
+            'actor' => $actor,
+            'user' => $user,
+        ]);
     }
 }

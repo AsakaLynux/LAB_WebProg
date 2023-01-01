@@ -20,8 +20,15 @@ class UserController extends Controller
         return view('user.detail-actor', ['actor' => $actor]);
     }
 
+    public function get_user_by_id($id) {
+        $user = User::find($id);
+        return view('user.profile', ['user' => $user]);
+    }
+
     // public function update() {
 
     //     return view('user.profile', ['user' => $user]);
     // }
+
+
 }

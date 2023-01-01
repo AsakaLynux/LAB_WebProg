@@ -7,15 +7,21 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="/update-profile" method="POST">
+
+
+    <form action="/user" method="POST">
         @csrf
-        <input type="text" name="username" placeholder="username" id="username">
-        <input type="email" name="email" placeholder="email" id="email">
-        <input type="date" name="dob" id="dob" placeholder="Date of Birth">
-        <input type="text" name="phone" id="phone" placeholder="Phone">
-        <label for="insertImage">Background Url </label>
-        <input type="file" id="insertImage" name="profile">
-        <input type="submit" value="update">
+        <input type="hidden" value="{{$user->email}}" name="email">
+        <h1>{{$user->username}}</h1>
+        <h1>{{$user->email}}</h1>
+        <h1>{{$user->dob}}</h1>
+        <h1>{{$user->phone}}</h1>
+        <img idth="200px" height="200px" src="../{{$user->image_url}}" alt="">
+        <input type="submit" value="Back">
+
+        <br><a href="{{ url('/update-profile/'. $user->id) }}">Update Profile</a>
     </form>
+
+
 </body>
 </html>
