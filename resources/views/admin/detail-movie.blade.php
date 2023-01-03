@@ -20,6 +20,14 @@
     <img width="200px" height="200px" src="../{{$movies->background}}" alt="">
 
 
-    <br><a href="{{ url('/update-movie/'. $movies->id) }}">Update Movie</a>
+
+    <form action="/update-movie/{{$movies->id}}" method="post">
+        @csrf
+        <input type="submit" value="Update Movie">
+    </form>
+    <form action="/delete-movie/{{$movies->id}}" method="post">
+        @csrf
+        <input type="submit" value="Delete Movie">
+    </form>
 </body>
 </html>

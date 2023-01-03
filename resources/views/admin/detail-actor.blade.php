@@ -16,6 +16,13 @@
     <h2>{{$actor->popularity}}</h2>
     <img width="200px" height="200px" src="../{{$actor->image_url}}" alt="">
 
-    <br><a href="{{ url('/update-actor/'. $actor->id) }}">Update Actor</a>
+    <form action="/update-actor/{{$actor->id}}" method="post">
+        @csrf
+        <input type="submit" value="Update Actor">
+    </form>
+    <form action="/delete-actor/{{$actor->id}}" method="post">
+        @csrf
+        <input type="submit" value="Delete Actor">
+    </form>
 </body>
 </html>

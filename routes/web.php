@@ -53,19 +53,19 @@ Route::get('/admin', [AdminController::class, 'get'])->middleware('securityAdmin
 // Movie
 Route::post('/create-movie', [MovieController::class, 'create']);
 Route::post('/update-movie', [MovieController::class, 'update']);
-Route::get('/update-movie/{id}', [MovieController::class, 'get_movie_by_id']);
-Route::get('/detail-movies/{id}', [AdminController::class, 'get_movie_by_id']);
+Route::post('/update-movie/{id}', [MovieController::class, 'get_movie_by_id']);
+Route::post('/detail-movies/{id}', [AdminController::class, 'get_movie_by_id']);
+Route::post('/delete-movie/{id}', [MovieController::class, 'delete']);
 
 // Actor
 Route::get('/create-actor', function() {
     return view('admin.create-actor');
 });
 Route::post('/create-actor', [ActorController::class, 'create']);
-Route::get('/update-actor/{id}', [ActorController::class, 'get_actor_by_id']);
+Route::post('/update-actor/{id}', [ActorController::class, 'get_actor_by_id']);
 Route::post('/update-actor', [ActorController::class, 'update']);
-
-
-Route::get('/detail-actors/{id}', [AdminController::class, 'get_actor_by_id']);
+Route::post('/detail-actors/{id}', [AdminController::class, 'get_actor_by_id']);
+Route::post('/delete-actor/{id}', [ActorController::class, 'delete']);
 
 // Guest
 

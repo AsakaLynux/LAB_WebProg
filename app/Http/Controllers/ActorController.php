@@ -71,6 +71,14 @@ class ActorController extends Controller
 
         return redirect("/detail-actors/$request->id_update");
     }
+
+    public function delete($id){
+        $actor = Actor::find($id);
+        Storage::delete("public/images/actor/".$actor->image_url);
+        $actor->delete();
+        return redirect('/admin');
+    }
+
     public function get_actor_by_id($id) {
         $actor = Actor::find($id);
         return view('admin.update-actor', ['actor' => $actor]);

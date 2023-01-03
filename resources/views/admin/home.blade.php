@@ -55,7 +55,10 @@
                         <td><img width="200px" height="200px" src="{{$movie->image_thumbnail}}" alt=""></td>
                         <td><img width="200px" height="200px" src="{{$movie->background}}" alt=""></td>
                         <td>
-                            <a href="{{ url('/detail-movies/'.$movie->id) }}">Detail</a>
+                            <form action="/detail-movies/{{$movie->id}}" method="POST">
+                                @csrf
+                                <input type="submit" value="Detail">
+                            </form>
                         </td>
                    </tr>
                 @endforeach
@@ -89,7 +92,10 @@
                         <td>{{$actor->popularity}}</td>
                         <td><img width="200px" height="200px" src="{{$actor->image_url}}" alt=""></td>
                         <td>
-                            <a href="{{ url('/detail-actors/'.$actor->id) }}">Detail</a>
+                            <form action="/detail-actors/{{$actor->id}}" method="POST">
+                                @csrf
+                                <input type="submit" value="Detail">
+                            </form>
                         </td>
                    </tr>
                 @endforeach

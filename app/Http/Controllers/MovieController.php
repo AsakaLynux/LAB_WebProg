@@ -101,6 +101,14 @@ class MovieController extends Controller
         return redirect("/detail-movies/$request->id_update");
     }
 
+    public function delete($id){
+        $movie = Movie::find($id);
+        Storage::delete("public/images/movie/background/".$movie->background);
+        Storage::delete("public/images/movie/thumbnail/".$movie->image_thumbnail);
+        $movie->delete();
+        return redirect('/admin');
+    }
+
     public function get_movie_by_id($id) {
         $movie = Movie::find($id);
         return view('admin.update-movie', ['movies' => $movie]);
