@@ -17,31 +17,44 @@
             <label for="title">Title</label>
             <input type="text" name="title">
 
-            <label for="description">Description</label>
+            <br><label for="description">Description</label>
             <input type="text" name="description">
 
-            <label for="genre">Genre</label>
+            <br><label for="genre">Genre</label>
             <input type="text" name="genre">
 
-            <label for="actor">Actor</label>
-            <input type="text" name="actor">
 
-            <label for="character-name">Character Name</label>
-            <input type="text" name="character_name">
+            @for ($i = 0; $i < 2; $i++)
+                <br><label for="actor">Actor {{$i+1}}</label>
+                <select name="actor{{$i+1}}">
+                    @foreach ($actors as $actor)
+                       <option value="{{$actor->name}}">{{$actor->name}}</option>
+                    @endforeach
+                </select>
+            @endfor
 
-            <label for="director">Director</label>
+            {{-- @foreach ($actor as $actor)
+                <h1>{{$actor->name}}</h1>
+            @endforeach --}}
+            <br><label for="character-name">Character Name</label>
+            <input type="text" name="character_name1">
+
+            <br><label for="character-name">Character Name</label>
+            <input type="text" name="character_name2">
+
+            <br><label for="director">Director</label>
             <input type="text" name="director">
 
-            <label for="release-date">Release date</label>
+            <br><label for="release-date">Release date</label>
             <input type="date" name="release_date">
 
-            <label for="insertImage">Image Url </label>
+            <br><label for="insertImage">Image Url </label>
             <input type="file" id="insertImage" name="image_thumbnail">
 
-            <label for="insertImage">Background Url </label>
+            <br><label for="insertImage">Background Url </label>
             <input type="file" id="insertImage" name="background">
 
-            <input type="submit" value="Submit">
+            <br><input type="submit" value="Submit">
         </form>
     </div>
 

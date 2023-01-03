@@ -51,6 +51,7 @@ Route::post('/update-profile', [AuthController::class, 'update_profile']);
 Route::get('/admin', [AdminController::class, 'get'])->middleware('securityAdmin');
 
 // Movie
+Route::get('/create-movie', [AdminController::class, 'get_actor']);
 Route::post('/create-movie', [MovieController::class, 'create']);
 Route::post('/update-movie', [MovieController::class, 'update']);
 Route::post('/update-movie/{id}', [MovieController::class, 'get_movie_by_id']);

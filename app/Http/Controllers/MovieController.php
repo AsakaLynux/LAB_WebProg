@@ -16,9 +16,12 @@ class MovieController extends Controller
             'release_date' => 'required',
             'image_thumbnail' => 'required|mimes:jpeg,jpg,png,gif',
             'background' => 'required|mimes:jpeg,jpg,png,gif',
-            'character_name' => 'required',
+            'character_name1' => 'required',
+            'character_name2' => 'required',
+            // 'character_name.*' => 'required|string|distinct',
             'genre' => 'required',
-            'actor' => 'required',
+            'actor1' => 'required',
+            'actor2' => 'required',
         ]);
 
         $movie = new Movie();
@@ -27,8 +30,10 @@ class MovieController extends Controller
         $movie->title = $validateData['title'];
         $movie->description = $validateData['description'];
         $movie->genre = $validateData['genre'];
-        $movie->actor = $validateData['actor'];
-        $movie->character_name = $validateData['character_name'];
+        $movie->actor1 = $validateData['actor1'];
+        $movie->actor2 = $validateData['actor2'];
+        $movie->character_name1 = $validateData['character_name1'];
+        $movie->character_name2 = $validateData['character_name2'];
         $movie->director = $validateData['director'];
         $movie->release_date = $validateData['release_date'];
         $movie->image_thumbnail = $validateData['image_thumbnail'];
@@ -49,8 +54,10 @@ class MovieController extends Controller
         $movie->title = $request->title;
         $movie->description = $request->description;
         $movie->genre = $request->genre;
-        $movie->actor = $request->actor;
-        $movie->character_name = $request->character_name;
+        $movie->actor1 = $request->actor1;
+        $movie->actor2 = $request->actor2;
+        $movie->character_name1 = $request->character_name1;
+        $movie->character_name2 = $request->character_name2;
         $movie->director = $request->director;
         $movie->release_date = $request->release_date;
         $movie->image_thumbnail = $imageNameThumbnail;
@@ -90,8 +97,10 @@ class MovieController extends Controller
         $movie->title = $request->title != null ? $request->title : $movie->title;
         $movie->description = $request->description != null ? $request->description : $movie->description;
         $movie->genre = $request->genre != null ? $request->genre : $movie->genre;
-        $movie->actor = $request->actor != null ? $request->actor : $movie->actor;
-        $movie->character_name = $request->character_name != null ? $request->character_name : $movie->character_name;
+        $movie->actor1 = $request->actor1 != null ? $request->actor1 : $movie->actor1;
+        $movie->actor2 = $request->actor2 != null ? $request->actor2 : $movie->actor2;
+        $movie->character_name1 = $request->character_name1 != null ? $request->character_name1 : $movie->character_name1;
+        $movie->character_name2 = $request->character_name2 != null ? $request->character_name2 : $movie->character_name2;
         $movie->director = $request->director != null ? $request->director : $movie->director;
         $movie->release_date = $request->release_date != null ? $request->release_date : $movie->release_date;
 
@@ -113,4 +122,6 @@ class MovieController extends Controller
         $movie = Movie::find($id);
         return view('admin.update-movie', ['movies' => $movie]);
     }
+
+
 }

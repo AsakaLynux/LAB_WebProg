@@ -27,4 +27,10 @@ class AdminController extends Controller
         return view('admin.detail-actor', ['actor' => $actor]);
     }
 
+    public function get_actor() {
+        $actor = Actor::all();
+        // dd($actor);
+        return view('admin.create-movie', ['actors' => $actor]);
+    }
+
 }
