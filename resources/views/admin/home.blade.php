@@ -33,10 +33,8 @@
                 <th>Title</th>
                 <th>Description</th>
                 <th>Genre</th>
-                <th>Actor 1</th>
-                <th>Actor 2</th>
-                <th>Character Name 1</th>
-                <th>Character Name 2</th>
+                <th>Actor</th>
+                <th>Character Name</th>
                 <th>Director</th>
                 <th>Release date</th>
                 <th>Image</th>
@@ -50,10 +48,8 @@
                         <td>{{$movie->title}}</td>
                         <td>{{$movie->description}}</td>
                         <td>{{$movie->genre}}</td>
-                        <td>{{$movie->actor1}}</td>
-                        <td>{{$movie->actor2}}</td>
-                        <td>{{$movie->character_name1}}</td>
-                        <td>{{$movie->character_name2}}</td>
+                        <td>{{$movie->actor}}</td>
+                        <td>{{$movie->character_name}}</td>
                         <td>{{$movie->director}}</td>
                         <td>{{$movie->release_date}}</td>
                         <td><img width="200px" height="200px" src="{{$movie->image_thumbnail}}" alt=""></td>

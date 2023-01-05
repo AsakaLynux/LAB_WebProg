@@ -18,10 +18,8 @@ class CreateMoviesTable extends Migration
             $table->string('title');
             $table->string('description');
             $table->string('genre');
-            $table->string('actor1');
-            $table->string('actor2');
-            $table->string('character_name1');
-            $table->string('character_name2');
+            $table->string('actor');
+            $table->string('character_name');
             $table->string('director');
             $table->date('release_date');
             $table->string('image_thumbnail');
