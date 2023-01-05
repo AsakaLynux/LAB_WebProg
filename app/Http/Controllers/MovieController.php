@@ -16,10 +16,10 @@ class MovieController extends Controller
             'release_date' => 'required',
             'image_thumbnail' => 'required|mimes:jpeg,jpg,png,gif',
             'background' => 'required|mimes:jpeg,jpg,png,gif',
-            'character_name' => 'required',
+            'character_name' => 'required|array',
             // 'character_name.*' => 'required|string|distinct',
-            'genre' => 'required',
-            'actor' => 'required',
+            'genre' => 'required|array',
+            'actor' => 'required|array',
         ]);
 
         $movie = new Movie();
@@ -49,9 +49,9 @@ class MovieController extends Controller
 
         $movie->title = $request->title;
         $movie->description = $request->description;
-        $movie->genre = $request->genre;
-        $movie->actor = $request->actor;
-        $movie->character_name = $request->character_name;
+        $movie->genre = implode(", ", $request->genre);
+        $movie->actor = implode(", ", $request->actor);
+        $movie->character_name = implode(", ", $request->character_name);
         $movie->director = $request->director;
         $movie->release_date = $request->release_date;
         $movie->image_thumbnail = $imageNameThumbnail;

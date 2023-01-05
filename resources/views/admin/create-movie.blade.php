@@ -15,52 +15,60 @@
     <div class="insert-movie">
         <form action="/create-movie" enctype="multipart/form-data" method="POST">
             @csrf
-            <label for="title">Title</label>
+            <label for="title">Title: </label>
             <input type="text" name="title">
 
-            <br><label for="description">Description</label>
+            <br><label for="description">Description: </label>
             <input type="text" name="description">
 
-            <br><label for="genre">Genre</label>
-            <input type="text" name="genre">
-
-            {{-- <p>
-                <label for="actor">Actor: </label>
-                <input type="text" name="actor">
-                <label for="character-name">Character Name: </label>
-                <input type="text" name="character_name">
-                <button class="remove">Remove</button>
-            </p>
-            <p>
-                <button class="add">Add more</button>
-            </p> --}}
-
+            <br><label for="genre">Genre: </label>
+            <input type="checkbox" name="genre[]" value="Action">
+            <label for="genre">Action</label>
+            <input type="checkbox" name="genre[]" value="Animation">
+            <label for="genre">Animation</label>
+            <input type="checkbox" name="genre[]" value="Comedy">
+            <label for="genre">Comedy</label>
+            <input type="checkbox" name="genre[]" value="Crime">
+            <label for="genre">Crime</label>
+            <input type="checkbox" name="genre[]" value="Drama">
+            <label for="genre">Drama</label>
+            <input type="checkbox" name="genre[]" value="Experimental">
+            <label for="genre">Experimental</label>
+            <input type="checkbox" name="genre[]" value="Fantasy">
+            <label for="genre">Fantasy</label>
+            <input type="checkbox" name="genre[]" value="Historical">
+            <label for="genre">Historical</label>
+            <input type="checkbox" name="genre[]" value="Science Fiction">
+            <label for="genre">Science Fiction</label>
+            <input type="checkbox" name="genre[]" value="Thriller">
+            <label for="genre">Thriller</label>
+            <input type="checkbox" name="genre[]" value="Western">
+            <label for="genre">Western</label>
+            <input type="checkbox" name="genre[]" value="Horror">
+            <label for="genre">Horror</label>
+            <input type="checkbox" name="genre[]" value="Romance">
+            <label for="genre">Romance</label>
 
                 <div class="records">
-
                     <label for="actor">Actor: </label>
-                    <input type="text" name="actor">
+                    <input type="text" name="actor[]">
                     <label for="character-name">Character Name: </label>
-                    <input type="text" name="character_name">
-
-
+                    <input type="text" name="character_name[]">
                   <a class="extra-fields" href="#">Add More Fields</a>
                 </div>
 
                 <div class="records_dynamic"></div>
 
-
-
-            <br><label for="director" class="director">Director</label>
+            <br><label for="director" class="director">Director: </label>
             <input type="text" name="director">
 
-            <br><label for="release-date">Release date</label>
+            <br><label for="release-date">Release date: </label>
             <input type="date" name="release_date">
 
-            <br><label for="insertImage">Image Url </label>
+            <br><label for="insertImage">Image Url: </label>
             <input type="file" id="insertImage" name="image_thumbnail">
 
-            <br><label for="insertImage">Background Url </label>
+            <br><label for="insertImage">Background Url: </label>
             <input type="file" id="insertImage" name="background">
 
             <br><input type="submit" value="Submit">
