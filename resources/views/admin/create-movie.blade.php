@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <title>Document</title>
 </head>
 
@@ -23,26 +24,34 @@
             <br><label for="genre">Genre</label>
             <input type="text" name="genre">
 
+            {{-- <p>
+                <label for="actor">Actor: </label>
+                <input type="text" name="actor">
+                <label for="character-name">Character Name: </label>
+                <input type="text" name="character_name">
+                <button class="remove">Remove</button>
+            </p>
+            <p>
+                <button class="add">Add more</button>
+            </p> --}}
 
-            @for ($i = 0; $i < 2; $i++)
-                <br><label for="actor">Actor {{$i+1}}</label>
-                <select name="actor{{$i+1}}">
-                    @foreach ($actors as $actor)
-                       <option value="{{$actor->name}}">{{$actor->name}}</option>
-                    @endforeach
-                </select>
-            @endfor
 
-            {{-- @foreach ($actor as $actor)
-                <h1>{{$actor->name}}</h1>
-            @endforeach --}}
-            <br><label for="character-name">Character Name</label>
-            <input type="text" name="character_name1">
+                <div class="records">
 
-            <br><label for="character-name">Character Name</label>
-            <input type="text" name="character_name2">
+                    <label for="actor">Actor: </label>
+                    <input type="text" name="actor">
+                    <label for="character-name">Character Name: </label>
+                    <input type="text" name="character_name">
 
-            <br><label for="director">Director</label>
+
+                  <a class="extra-fields" href="#">Add More Fields</a>
+                </div>
+
+                <div class="records_dynamic"></div>
+
+
+
+            <br><label for="director" class="director">Director</label>
             <input type="text" name="director">
 
             <br><label for="release-date">Release date</label>
@@ -68,4 +77,27 @@
     </div>
     @endif
 </body>
+<script>
+    $('.extra-fields').click(function() {
+    $('.records').clone().appendTo('.records_dynamic');
+    $('.records_dynamic .records').addClass('single remove');
+    $('.single .extra-fields').remove();
+    $('.single').append('<a href="#" class="remove-field btn-remove-customer">Remove Fields</a>');
+    $('.records_dynamic > .single').attr("class", "remove");
+
+    $('.records_dynamic input').each(function() {
+        var count = 0;
+        var fieldname = $(this).attr("name");
+        $(this).attr('name', fieldname + count);
+        count++;
+    });
+
+    });
+
+    $(document).on('click', '.remove-field', function(e) {
+        $(this).parent('.remove').remove();
+        e.preventDefault();
+    });
+
+</script>
 </html>
