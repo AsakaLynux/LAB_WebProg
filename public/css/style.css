@@ -1,0 +1,144 @@
+body{
+    background-color: black;
+}
+
+.movielogo {
+    width: 130px;
+    margin: 0 30px;
+}
+
+.movielogo-footer {
+    width: 130px;
+    margin: 30px 0;
+}
+
+.navbar-container {
+    margin-right: 85px;
+}
+
+.navbar-content {
+    margin: 0 10px;
+}
+
+.navbar-text {
+    color:white;
+    padding: 2% 0;
+    margin: 0 3%;
+    text-decoration: none;
+    transition: all .5s;
+}
+
+.navbar-text:hover{
+    color: red;
+}
+
+.navbar-text:active{
+    transform: scale(.95);
+}
+
+.footer-text{
+    padding: 2% 0;
+}
+
+.footer-movielogo{
+    width: 80px;
+    padding-bottom: 4px
+}
+
+.footer-text {
+    margin: 0 10px;
+    text-decoration: none;
+    transition: all .5s;
+}
+
+.footer-text:hover{
+    color: red;
+}
+
+.footer-text:active{
+    transform: scale(.95);
+}
+
+.form-width{
+    width: 50%;
+}
+
+.form-control {
+    border: 0;
+}
+
+.carousel-img {
+    filter: brightness(50%);
+    box-shadow: inset 0px 0px 10px rgba(0,0,0,0.9);
+}
+
+.popular-img {
+    width: 20px;
+    height: 35px;
+}
+
+.show-img {
+    width: 40px;
+    height: 40px;
+}
+
+.show-btn {
+    border-radius: 30px;
+    font-size: 15px;
+    padding: 5px 30px;
+    color: white;
+    margin: 10px 10px;
+    border-style: none;
+    transition: all .3s;
+}
+
+.show-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 10px 0px red;
+}
+
+.show-btn:active {
+    transform: scale(.85);
+}
+
+.cover-img {
+    margin: 20px 0;
+    height: 400px;
+    width: auto;
+}
+
+.cover-text {
+    font-size: 15px;
+    text-decoration: none;
+}
+
+.dropdown-profile {
+    margin-left: 6px;
+    transition: all .5s;
+}
+
+.dropdown-profile:hover {
+    box-shadow: 0px 0px 10px 0px red;
+}
+
+.form-select {
+    border: none;
+}
+
+.form-select:hover {
+    cursor: pointer;
+}
+
+.form-selected:hover {
+    cursor: pointer;
+}
+
+.coverpict {
+    height: 300px;
+    width: 300px;
+}
+
+.coverlink {
+    text-decoration: none;
+    color: white;
+}
