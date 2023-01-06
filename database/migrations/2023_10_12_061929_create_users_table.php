@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('image_url')->nullable();
             $table->string('password');
             $table->string('role')->default('member');
+            $table->foreignId('watchlist_id')->nullable()->references('id')->on('watchlists');
             $table->timestamp('date_joined');
             $table->rememberToken();
         });

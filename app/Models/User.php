@@ -23,6 +23,10 @@ class User extends Authenticatable
         'password',
     ];
 
+    public function watchlist() {
+        return $this->hasMany(watchlist::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

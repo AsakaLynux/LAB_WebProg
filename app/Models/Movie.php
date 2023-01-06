@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Movie extends Model
 {
     use HasFactory;
+
+    public function watchlist() {
+        return $this->belongsToMany(Watchlist::class);
+    }
 }
