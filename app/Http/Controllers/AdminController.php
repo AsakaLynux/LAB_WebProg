@@ -9,9 +9,9 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function get() {
-        $movie = Movie::all();
-        $actor = Actor::all();
+    public function get(Request $request) {
+        $movie = Movie::where("title", "LIKE", "%$request->searchMovie%")->paginate(3)->appends(["search"=>$request->searchMovie]);
+        $actor = Actor::where("name", "LIKE", "%$request->searchActor%")->paginate()->appends(["search"=>$request->searchActor]);
         return view('admin.home')->with([
             'movies' => $movie,
             'actors' => $actor
