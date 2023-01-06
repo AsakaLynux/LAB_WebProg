@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Actor;
+use App\Models\Genre;
 use App\Models\Movie;
 use Illuminate\Http\Request;
 
@@ -27,10 +28,9 @@ class AdminController extends Controller
         return view('admin.detail-actor', ['actor' => $actor]);
     }
 
-    public function get_actor() {
-        $actor = Actor::all();
-        // dd($actor);
-        return view('admin.create-movie', ['actors' => $actor]);
+    public function get_genre() {
+        $genre = Genre::all();
+        return view('admin.create-movie', ['genres' => $genre]);
     }
 
 }

@@ -22,7 +22,12 @@
             <input type="text" name="description">
 
             <br><label for="genre">Genre: </label>
-            <input type="checkbox" name="genre[]" value="Action">
+            @foreach ($genres as $genre)
+            <input type="checkbox" name="genre[]" value={{$genre->genre}}>
+            <label for="genre">{{$genre->genre}}</label>
+
+            @endforeach
+            {{-- <input type="checkbox" name="genre[]" value="Action">
             <label for="genre">Action</label>
             <input type="checkbox" name="genre[]" value="Animation">
             <label for="genre">Animation</label>
@@ -47,7 +52,7 @@
             <input type="checkbox" name="genre[]" value="Horror">
             <label for="genre">Horror</label>
             <input type="checkbox" name="genre[]" value="Romance">
-            <label for="genre">Romance</label>
+            <label for="genre">Romance</label> --}}
 
                 <div class="records">
                     <label for="actor">Actor: </label>

@@ -34,5 +34,7 @@ class DatabaseSeeder extends Seeder
             'dob' => '2002-02-21',
             'password' => bcrypt('asaka123'),
         ]);
+
+        $this->call(GenreSeeder::class);
     }
 }
