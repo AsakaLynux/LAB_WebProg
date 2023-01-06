@@ -128,7 +128,7 @@ class AuthController extends Controller
         //     $user->image_url = $imageNameProfile;
 
         // }
-        dd($fileProfile);
+        dump($fileProfile);
         $user->username = $request->username != null ? $request->username : $user->username;
         $user->email = $request->email != null ? $request->email : $user->email;
         $user->username = $request->username != null ? $request->username : $user->username;

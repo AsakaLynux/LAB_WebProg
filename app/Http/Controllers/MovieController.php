@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Genre;
 use App\Models\Movie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -17,7 +18,6 @@ class MovieController extends Controller
             'image_thumbnail' => 'required|mimes:jpeg,jpg,png,gif',
             'background' => 'required|mimes:jpeg,jpg,png,gif',
             'character_name' => 'required|array',
-            // 'character_name.*' => 'required|string|distinct',
             'genre' => 'required|array',
             'actor' => 'required|array',
         ]);
@@ -90,9 +90,9 @@ class MovieController extends Controller
 
         $movie->title = $request->title != null ? $request->title : $movie->title;
         $movie->description = $request->description != null ? $request->description : $movie->description;
-        $movie->genre = $request->genre != null ? $request->genre : $movie->genre;
-        $movie->actor = $request->actor != null ? $request->actor : $movie->actor;
-        $movie->character_name = $request->character_name != null ? $request->character_name : $movie->character_name;
+        $movie->genre = implode(", ", $request->genre != null ? $request->genre : $movie->genre);
+        $movie->actor = implode(", ",$request->actor != null ? $request->actor : $movie->actor);
+        $movie->character_name =implode(", ",$request->character_name != null ? $request->character_name : $movie->character_name);
         $movie->director = $request->director != null ? $request->director : $movie->director;
         $movie->release_date = $request->release_date != null ? $request->release_date : $movie->release_date;
 
@@ -112,7 +112,11 @@ class MovieController extends Controller
 
     public function get_movie_by_id($id) {
         $movie = Movie::find($id);
-        return view('admin.update-movie', ['movies' => $movie]);
+        $genre = Genre::all();
+        return view('admin.update-movie')->with([
+            'movies' => $movie,
+            'genres' => $genre,
+        ]);
     }
 
 

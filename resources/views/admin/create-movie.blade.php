@@ -23,46 +23,19 @@
 
             <br><label for="genre">Genre: </label>
             @foreach ($genres as $genre)
-            <input type="checkbox" name="genre[]" value={{$genre->genre}}>
-            <label for="genre">{{$genre->genre}}</label>
+                <input type="checkbox" name="genre[]" value={{$genre->genre}}>
+                <label for="genre">{{$genre->genre}}</label>
 
             @endforeach
-            {{-- <input type="checkbox" name="genre[]" value="Action">
-            <label for="genre">Action</label>
-            <input type="checkbox" name="genre[]" value="Animation">
-            <label for="genre">Animation</label>
-            <input type="checkbox" name="genre[]" value="Comedy">
-            <label for="genre">Comedy</label>
-            <input type="checkbox" name="genre[]" value="Crime">
-            <label for="genre">Crime</label>
-            <input type="checkbox" name="genre[]" value="Drama">
-            <label for="genre">Drama</label>
-            <input type="checkbox" name="genre[]" value="Experimental">
-            <label for="genre">Experimental</label>
-            <input type="checkbox" name="genre[]" value="Fantasy">
-            <label for="genre">Fantasy</label>
-            <input type="checkbox" name="genre[]" value="Historical">
-            <label for="genre">Historical</label>
-            <input type="checkbox" name="genre[]" value="Science Fiction">
-            <label for="genre">Science Fiction</label>
-            <input type="checkbox" name="genre[]" value="Thriller">
-            <label for="genre">Thriller</label>
-            <input type="checkbox" name="genre[]" value="Western">
-            <label for="genre">Western</label>
-            <input type="checkbox" name="genre[]" value="Horror">
-            <label for="genre">Horror</label>
-            <input type="checkbox" name="genre[]" value="Romance">
-            <label for="genre">Romance</label> --}}
 
-                <div class="records">
-                    <label for="actor">Actor: </label>
-                    <input type="text" name="actor[]">
-                    <label for="character-name">Character Name: </label>
-                    <input type="text" name="character_name[]">
-                  <a class="extra-fields" href="#">Add More Fields</a>
-                </div>
-
-                <div class="records_dynamic"></div>
+            <div class="records">
+                <label for="actor">Actor: </label>
+                <input type="text" name="actor[]">
+                <label for="character-name">Character Name: </label>
+                <input type="text" name="character_name[]">
+                <a class="extra-fields" href="#">Add More Fields</a>
+            </div>
+            <div class="records_dynamic"></div>
 
             <br><label for="director" class="director">Director: </label>
             <input type="text" name="director">
