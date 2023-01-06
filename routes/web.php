@@ -37,36 +37,38 @@ Route::post('/login', [AuthController::class, 'login']);
 
 Route::get('/logout', [AuthController::class, 'logout']);
 
-// User
+// member
 Route::post('/user', [AuthController::class, 'get'])->middleware('securityUser');
 
 Route::get('/detail-movie/{id}', [UserController::class, 'get_movie_by_id']);
 Route::get('/detail-actor/{id}', [UserController::class, 'get_actor_by_id']);
 Route::get('/profile/{id}', [UserController::class, 'get_user_by_id']);
 Route::get('/update-profile/{id}', [AuthController::class, 'get_user_by_id']);
-Route::post('/update-profile', [AuthController::class, 'update_profile']);
+Route::post('/update-profile', [AuthController::class, 'update']);
 
 
 // Admin
 Route::get('/admin', [AdminController::class, 'get'])->middleware('securityAdmin');
 
 // Movie
-Route::get('/create-movie', [AdminController::class, 'get_actor']);
-Route::post('/create-movie', [MovieController::class, 'create']);
-Route::post('/update-movie', [MovieController::class, 'update']);
-Route::post('/update-movie/{id}', [MovieController::class, 'get_movie_by_id']);
-Route::post('/detail-movies/{id}', [AdminController::class, 'get_movie_by_id']);
-Route::post('/delete-movie/{id}', [MovieController::class, 'delete']);
+Route::get('/create-movie', [AdminController::class, 'get_actor'])->middleware('securityAdmin');
+Route::post('/create-movie', [MovieController::class, 'create'])->middleware('securityAdmin');
+Route::post('/update-movie', [MovieController::class, 'update'])->middleware('securityAdmin');
+Route::post('/update-movie/{id}', [MovieController::class, 'get_movie_by_id'])->middleware('securityAdmin');
+Route::get('/detail-movies/{id}', [AdminController::class, 'get_movie_by_id'])->middleware('securityAdmin');
+Route::post('/detail-movies/{id}', [AdminController::class, 'get_movie_by_id'])->middleware('securityAdmin');
+Route::post('/delete-movie/{id}', [MovieController::class, 'delete'])->middleware('securityAdmin');
 
 // Actor
 Route::get('/create-actor', function() {
     return view('admin.create-actor');
-});
-Route::post('/create-actor', [ActorController::class, 'create']);
-Route::post('/update-actor/{id}', [ActorController::class, 'get_actor_by_id']);
-Route::post('/update-actor', [ActorController::class, 'update']);
-Route::post('/detail-actors/{id}', [AdminController::class, 'get_actor_by_id']);
-Route::post('/delete-actor/{id}', [ActorController::class, 'delete']);
+})->middleware('securityAdmin');
+Route::post('/create-actor', [ActorController::class, 'create'])->middleware('securityAdmin');
+Route::post('/update-actor/{id}', [ActorController::class, 'get_actor_by_id'])->middleware('securityAdmin');
+Route::post('/update-actor', [ActorController::class, 'update'])->middleware('securityAdmin');
+Route::get('/detail-actors/{id}', [AdminController::class, 'get_actor_by_id'])->middleware('securityAdmin');
+Route::post('/detail-actors/{id}', [AdminController::class, 'get_actor_by_id'])->middleware('securityAdmin');
+Route::post('/delete-actor/{id}', [ActorController::class, 'delete'])->middleware('securityAdmin');
 
 // Guest
 

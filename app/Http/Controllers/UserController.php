@@ -12,17 +12,17 @@ class UserController extends Controller
 
     public function get_movie_by_id($id) {
         $movie = Movie::find($id);
-        return view('user.detail-movie', ['movies' => $movie]);
+        return view('member.detail-movie', ['movies' => $movie]);
     }
 
     public function get_actor_by_id($id) {
         $actor = Actor::find($id);
-        return view('user.detail-actor', ['actor' => $actor]);
+        return view('member.detail-actor', ['actor' => $actor]);
     }
 
     public function get_user_by_id($id) {
         $user = User::find($id);
-        return view('user.profile', ['user' => $user]);
+        return view('member.profile', ['user' => $user]);
     }
 
     // public function update() {

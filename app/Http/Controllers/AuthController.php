@@ -22,8 +22,6 @@ class AuthController extends Controller
             'email' => 'required|email|unique:users,email',
             // 'password' => 'required|alpha_num|min:6',
             'password' => 'required|alpha_num|confirmed|min:6',
-
-
         ]);
 
         $time = Carbon::now()->format('Y-m-d');
@@ -37,14 +35,14 @@ class AuthController extends Controller
         // $imageNameProfile = $request->name.$fileProfile->getClientOriginalExtension();
         // Storage::putFileAs('public/images/user/', $fileProfile, $imageNameProfile);
         // $imageNameProfile = 'storage/images/user/, '. $imageNameProfile;
-        $fileProfile = $request->image_url;
-        if($fileProfile != null) {
-            $imageNameProfile = $request->name.$fileProfile->getClientOriginalExtension();
-            Storage::putFileAs('public/images/user/', $fileProfile, $imageNameProfile);
-            $imageNameProfile = 'storage/images/user/, '. $imageNameProfile;
-            $user->image_url = $imageNameProfile;
+        // $fileProfile = $request->image_url;
+        // if($fileProfile != null) {
+        //     $imageNameProfile = $request->name.$fileProfile->getClientOriginalExtension();
+        //     Storage::putFileAs('public/images/user/', $fileProfile, $imageNameProfile);
+        //     $imageNameProfile = 'storage/images/user/, '. $imageNameProfile;
+        //     $user->image_url = $imageNameProfile;
 
-        }
+        // }
 
         $user->username = $request->username;
         $user->email = $request->email;
@@ -86,16 +84,13 @@ class AuthController extends Controller
 
             $movie = Movie::all();
             $actor = Actor::all();
-            return view('user.home')->with([
+            return view('member.home')->with([
                 'movies' => $movie,
                 'user' => $users,
                 'actor' => $actor,
             ]);
-
         }
-
         return redirect()->back();
-
     }
 
 
@@ -107,23 +102,33 @@ class AuthController extends Controller
 
     public function get_user_by_id($id) {
         $user = User::find($id);
-        return view('user.update-profile', ['user' => $user]);
+        return view('member.update-profile', ['user' => $user]);
     }
 
-    public function update_profile(Request $request) {
-        $fileProfile = $request->file('imageProfile');
+    public function update(Request $request) {
 
         $user = User::find($request->id_update);
 
-        if($fileProfile != null) {
-            $imageNameProfile = $request->name.$fileProfile->getClientOriginalExtension();
-            Storage::putFileAs('public/images/user/', $fileProfile, $imageNameProfile);
-            $imageNameProfile = 'storage/images/user/, '. $imageNameProfile;
+        // $validateData = $request->validate([
+        //     'username' => 'unique:users,username|nullable',
+        //     'email' => 'unique:users,email|nullable',
+        // ]);
 
-            Storage::delete('public/images/user/'.$user->image_url);
-            $user->image_thumbnail = $imageNameProfile;
-        }
+        // $user->username = $validateData['username'];
+        // $user->email = $validateData['email'];
 
+
+        $fileProfile = $request->file('image');
+        // if($fileProfile != null) {
+        //     $imageNameProfile = $request->username.'_profile'.'.'.$fileProfile->getClientOriginalExtension();
+        //     Storage::putFileAs('public/images/member/', $fileProfile, $imageNameProfile);
+        //     $imageNameProfile = 'storage/images/member/'. $imageNameProfile;
+
+        //     Storage::delete('public/images/member/'.$user->image_url);
+        //     $user->image_url = $imageNameProfile;
+
+        // }
+        dd($fileProfile);
         $user->username = $request->username != null ? $request->username : $user->username;
         $user->email = $request->email != null ? $request->email : $user->email;
         $user->username = $request->username != null ? $request->username : $user->username;
@@ -142,9 +147,8 @@ class AuthController extends Controller
         ->Where('email', 'LIKE', $request->email)
         ->get();
         $movie = Movie::all();
-        // dd($user);
         $actor = Actor::all();
-        return view('user.home')->with([
+        return view('member.home')->with([
             'movies' => $movie,
             'actor' => $actor,
             'user' => $user,
