@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Actor;
+use App\Models\Genre;
 use App\Models\Movie;
 use App\Models\User;
 use Carbon\Carbon;
@@ -146,12 +147,14 @@ class AuthController extends Controller
         $user = User::query()
         ->Where('email', 'LIKE', $request->email)
         ->get();
-        $movie = Movie::all();
+        $genre = Genre::all();
+        $movie = Movie::where("title", "LIKE", "%$request->searchMovie%")->paginate()->appends(["search"=>$request->searchMovie]);
         $actor = Actor::all();
         return view('member.home')->with([
             'movies' => $movie,
             'actor' => $actor,
             'user' => $user,
+            'genres' => $genre,
         ]);
     }
 }

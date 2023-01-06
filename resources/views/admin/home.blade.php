@@ -32,6 +32,14 @@
         <input type="text" name="searchMovie" placeholder="Search....">
         <button type="submit">Search</button>
     </form>
+    <form action="/admin" method="get">
+        @foreach ($genres as $genre)
+            <input type="radio" name="genre" value="{{$genre->genre}}">
+            <label>{{$genre->genre}}</label>
+        @endforeach
+        <button type="submit">Genre</button>
+        {{-- <button type="submit">Reset</button> --}}
+    </form>
     <div class="table">
         <table>
             <thead>

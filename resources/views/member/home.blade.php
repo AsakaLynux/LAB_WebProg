@@ -19,7 +19,14 @@
 
     <h1>Movie List</h1>
 
-
+    <form action="/user" method="get">
+        <input type="text" name="searchMovie" placeholder="Search....">
+        <button type="submit">Search</button>
+    </form>
+    {{-- @foreach ($genres as $genre)
+        <input type="checkbox" value="{{$genre->genre}}">
+        <label>{{$genre->genre}}</label>
+    @endforeach --}}
     @foreach ($movies as $movie)
         <h2>{{$movie->id}}</h2>
         <a href="{{ url('/detail-movie/'.$movie->id) }}"><h2>{{$movie->title}}</h2></a>
@@ -27,7 +34,7 @@
         <img width="200px" height="200px" src="{{$movie->image_thumbnail}}" alt="">
 
     @endforeach
-
+    {{-- {{$movies->links()}} --}}
 
     <h1>Actor List</h1>
     @foreach ($actor as $actor)
@@ -37,7 +44,6 @@
 
 
     @endforeach
-    {{-- <h1>{{$user->id}}</h1> --}}
 
     <form action="/logout" method="get">
         <input type="submit" value="LOGOUT">
