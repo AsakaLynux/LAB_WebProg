@@ -33,6 +33,21 @@
         <img width="200px" height="200px" src="{{$movie->background}}" alt="">
         <img width="200px" height="200px" src="{{$movie->image_thumbnail}}" alt="">
 
+
+        @foreach ($users as $user)
+            <form action="/add-wathclist" method="POST">
+                @csrf
+                <select name="status">
+                    <option value="Planned">Planned</option>
+                    <option value="Watching">Watching</option>
+                    <option value="Finished">Finished</option>
+                </select>
+                <input type="hidden" name="user_id" value="{{$user->id}}">
+                <input type="hidden" name="movie_id" value="{{$movie->id}}">
+                <button type="submit">Add watchlist</button>
+            </form>
+        @endforeach
+
     @endforeach
     {{-- {{$movies->links()}} --}}
 
@@ -49,11 +64,12 @@
         <input type="submit" value="LOGOUT">
     </form>
 
-    @foreach ($user as $user)
+    @foreach ($users as $user)
 
         <h2>{{$user->id}}</h2>
 
         <a href="{{ url('/profile/'.$user->id) }}">Profile</a>
+        <a href="{{ url('/watchlist/'.$user->id) }}">Watchlist</a>
     @endforeach
 
 

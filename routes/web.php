@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WatchlistController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,7 +46,8 @@ Route::get('/detail-actor/{id}', [UserController::class, 'get_actor_by_id']);
 Route::get('/profile/{id}', [UserController::class, 'get_user_by_id']);
 Route::get('/update-profile/{id}', [AuthController::class, 'get_user_by_id']);
 Route::post('/update-profile', [AuthController::class, 'update']);
-
+Route::get('/watchlist/{id}', [UserController::class, 'get_watchlist_by_id']);
+Route::post('/add-wathclist', [WatchlistController::class, 'create']);
 
 // Admin
 Route::get('/admin', [AdminController::class, 'get'])->middleware('securityAdmin');

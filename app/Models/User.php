@@ -24,7 +24,11 @@ class User extends Authenticatable
     ];
 
     public function watchlist() {
-        return $this->hasMany(watchlist::class);
+        return $this->belongsTo(watchlist::class);
+    }
+
+    public function movie() {
+        return $this->belongsToMany(Movie::class);
     }
 
     /**

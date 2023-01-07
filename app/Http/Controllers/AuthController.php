@@ -21,7 +21,6 @@ class AuthController extends Controller
         $validateData = $request->validate([
             'username' => 'required|min:5|unique:users,username',
             'email' => 'required|email|unique:users,email',
-            // 'password' => 'required|alpha_num|min:6',
             'password' => 'required|alpha_num|confirmed|min:6',
         ]);
 
@@ -42,7 +41,6 @@ class AuthController extends Controller
         //     Storage::putFileAs('public/images/user/', $fileProfile, $imageNameProfile);
         //     $imageNameProfile = 'storage/images/user/, '. $imageNameProfile;
         //     $user->image_url = $imageNameProfile;
-
         // }
 
         $user->username = $request->username;
@@ -71,10 +69,9 @@ class AuthController extends Controller
         ->get();
 
 
-        // $users = User::find(1);
-        // dd($users);
-        if($request->Remember) {
-            Cookie::queue('myCookie', $request->email, 5);
+
+        if($request->remember) {
+            Cookie::queue('myCookie', $request->email, 120);
         }
 
         if(Auth::attempt(['email'=>$request->email, 'password'=>$request->password], true)) {
@@ -87,9 +84,10 @@ class AuthController extends Controller
             $actor = Actor::all();
             return view('member.home')->with([
                 'movies' => $movie,
-                'user' => $users,
+                'users' => $users,
                 'actor' => $actor,
             ]);
+            // return redirect('/user');
         }
         return redirect()->back();
     }

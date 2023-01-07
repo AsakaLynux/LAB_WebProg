@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Movie;
 use App\Models\User;
 use App\Models\Actor;
+use App\Models\Watchlist;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -25,10 +26,11 @@ class UserController extends Controller
         return view('member.profile', ['user' => $user]);
     }
 
-    // public function update() {
-
-    //     return view('user.profile', ['user' => $user]);
-    // }
-
+    public function get_watchlist_by_id($id) {
+        $watchlist = Watchlist::query()
+        ->Where('user_id', 'LIKE', $id)
+        ->get();
+        return view('member.watchlist', ['watchlists' => $watchlist]);
+    }
 
 }

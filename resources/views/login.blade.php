@@ -20,9 +20,9 @@
 @endif
     <form action="/login" method="POST">
         @csrf
-        <input type="email" name="email" placeholder="email" id="email">
+        <input type="email" name="email" placeholder="email" id="email" value={{Cookie::get('myCookie') !== null ? Cookie::get('myCookie') : ""}}>
         <input type="password" name="password" placeholder="password" id="password">
-        <input type="checkbox" name="Remember" id="Remember" checked{{Cookie::get('myCookie') !== null}}> Remember Me
+        <input type="checkbox" name="remember" id="Remember" checked{{Cookie::get('myCookie') !== null }}> Remember Me
         <input type="submit" value="login">
     </form>
 </body>

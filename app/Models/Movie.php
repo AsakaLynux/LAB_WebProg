@@ -12,4 +12,9 @@ class Movie extends Model
     public function watchlist() {
         return $this->belongsToMany(Watchlist::class);
     }
+
+    public function user() {
+        return $this->belongsToMany(User::class);
+    }
+
 }
