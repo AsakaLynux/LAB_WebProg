@@ -71,7 +71,8 @@ class AuthController extends Controller
 
 
         if($request->remember) {
-            Cookie::queue('myCookie', $request->email, 120);
+            Cookie::queue('myEmail', $request->email, 120);
+            Cookie::queue('myPassword', $request->password, 120);
         }
 
         if(Auth::attempt(['email'=>$request->email, 'password'=>$request->password], true)) {
