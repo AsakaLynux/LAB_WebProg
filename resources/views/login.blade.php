@@ -1,4 +1,4 @@
-@extends('layout-guest')
+@extends('guest.layout-guest')
 
 @section('contents')
 <div class="text-white d-flex justify-content-center p-3"
@@ -21,7 +21,7 @@
         <input type="checkbox" name="remember" id="Remember" checked{{Cookie::get('myEmail') !== null && Cookie::get('myPassword') !== null}}> Remember Me
         <div class="mb-3 d-flex">
             <p class="me-1">Don't have an account?</p>
-            <a class="nav-link text-danger" href="/register">Register now!</a>
+            <a class="nav-link text-danger" href="/">Register now!</a>
         </div>
       </form>
 </div>
