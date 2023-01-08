@@ -9,7 +9,7 @@
 <body>
 
 
-    <form action="/user" method="POST">
+    <form action="/user" method="GET">
         @csrf
         <input type="hidden" value="{{$user->email}}" name="email">
         <h1>{{$user->username}}</h1>

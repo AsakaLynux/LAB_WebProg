@@ -151,7 +151,7 @@ class AuthController extends Controller
         return view('member.home')->with([
             'movies' => $movie,
             'actor' => $actor,
-            'user' => $user,
+            'users' => $user,
             'genres' => $genre,
         ]);
     }
