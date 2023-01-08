@@ -23,12 +23,21 @@ class User extends Authenticatable
         'password',
     ];
 
-    public function watchlist() {
-        return $this->belongsTo(watchlist::class);
+    public function movies() {
+        return $this->belongsToMany(
+            Movie::class,
+            'watchlists',
+            'user_id',
+            'movies_id',
+        );
     }
 
-    public function movie() {
-        return $this->belongsToMany(Movie::class);
+    public function wathclists() {
+        return $this->hasMany(
+            Watchlist::class,
+            'watchlists',
+            'user_id',
+        );
     }
 
     /**

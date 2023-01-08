@@ -30,7 +30,12 @@ class UserController extends Controller
         $watchlist = Watchlist::query()
         ->Where('user_id', 'LIKE', $id)
         ->get();
-        return view('member.watchlist', ['watchlists' => $watchlist]);
+        $user = User::find($id)->movies;
+        // dd($user);
+        return view('member.watchlist')->with([
+            'watchlists' => $watchlist,
+            'users' => $user,
+        ]);
     }
 
 }

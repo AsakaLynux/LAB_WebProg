@@ -7,13 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Watchlist extends Model
 {
+
+    protected $table = "watchlists";
     use HasFactory;
 
-    public function user() {
-        return $this->belongsToMany(User::class);
-    }
-
-    public function movie() {
-        return $this->belongsToMany(Movie::class);
+    public function users() {
+        return $this->belongsTo(
+            User::class
+        );
     }
 }
