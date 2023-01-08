@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="/update-profile" method="POST">
+    <form action="/update-profile" method="POST" enctype="multipart/form-data">
         @csrf
         <input type="hidden" name="id_update" value="{{$user->id}}">
         <input type="text" name="username" placeholder="{{$user->username}}">

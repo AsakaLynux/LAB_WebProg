@@ -118,16 +118,16 @@ class AuthController extends Controller
 
 
         $fileProfile = $request->file('image');
-        // if($fileProfile != null) {
-        //     $imageNameProfile = $request->username.'_profile'.'.'.$fileProfile->getClientOriginalExtension();
-        //     Storage::putFileAs('public/images/member/', $fileProfile, $imageNameProfile);
-        //     $imageNameProfile = 'storage/images/member/'. $imageNameProfile;
+        if($fileProfile != null) {
+            $imageNameProfile = $request->id_update.'_profile'.'.'.$fileProfile->getClientOriginalExtension();
+            Storage::putFileAs('public/images/member/', $fileProfile, $imageNameProfile);
+            $imageNameProfile = 'storage/images/member/'. $imageNameProfile;
 
-        //     Storage::delete('public/images/member/'.$user->image_url);
-        //     $user->image_url = $imageNameProfile;
+            Storage::delete('public/images/member/'.$user->image_url);
+            $user->image_url = $imageNameProfile;
 
-        // }
-        dump($fileProfile);
+        }
+
         $user->username = $request->username != null ? $request->username : $user->username;
         $user->email = $request->email != null ? $request->email : $user->email;
         $user->username = $request->username != null ? $request->username : $user->username;

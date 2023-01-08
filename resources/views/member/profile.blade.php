@@ -17,7 +17,7 @@
         <h1>{{$user->dob}}</h1>
         <h1>{{$user->phone}}</h1>
         <img idth="200px" height="200px" src="../{{$user->image_url}}" alt="">
-        <input type="submit" value="Back">
+        <br><input type="submit" value="Back">
 
         <br><a href="{{ url('/update-profile/'. $user->id) }}">Update Profile</a>
     </form>
