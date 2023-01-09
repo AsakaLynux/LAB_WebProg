@@ -83,10 +83,12 @@ class AuthController extends Controller
 
             $movie = Movie::all();
             $actor = Actor::all();
-            return view('member.home')->with([
+            $genre = Genre::all();
+            return view('member.home-user')->with([
                 'movies' => $movie,
                 'users' => $users,
-                'actor' => $actor,
+                'actors' => $actor,
+                'genres' => $genre,
             ]);
             // return redirect('/user');
         }
@@ -149,9 +151,9 @@ class AuthController extends Controller
         $genre = Genre::all();
         $movie = Movie::where("title", "LIKE", "%$request->searchMovie%")->paginate()->appends(["search"=>$request->searchMovie]);
         $actor = Actor::all();
-        return view('member.home')->with([
+        return view('member.home-user')->with([
             'movies' => $movie,
-            'actor' => $actor,
+            'actors' => $actor,
             'users' => $user,
             'genres' => $genre,
         ]);

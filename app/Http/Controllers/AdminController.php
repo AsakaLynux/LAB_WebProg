@@ -13,6 +13,9 @@ class AdminController extends Controller
         $movie = Movie::query()->where("title", "LIKE", "%$request->searchMovie%", "or" ,"genre", "LIKE", "%$request->genre%")->paginate()->appends([
             "search"=>$request->searchMovie,
         ]);
+        // $movie = Movie::query()->where("id", "LIKE", "%rand(0, count($movie)", "or" ,"genre", "LIKE", "%$request->genre%")->paginate()->appends([
+        //     "search"=>$request->searchMovie,
+        // ]);
         $actor = Actor::where("name", "LIKE", "%$request->searchActor%")->paginate()->appends(["search"=>$request->searchActor]);
         $genre = Genre::all();
         return view('admin.home')->with([
