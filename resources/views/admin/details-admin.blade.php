@@ -1,4 +1,4 @@
-@extends('layout-admin')
+@extends('layout.layout-admin')
 
 @section('contents')
 <div class="card m-5 text-white bg-dark mx-auto" style="max-width: 980px;">
