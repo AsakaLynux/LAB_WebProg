@@ -30,6 +30,7 @@
             <select name="actor[]">
                 @foreach ($actors as $actor)
                     <option value="{{$actor->name}}">{{$actor->name}}</option>
+
                 @endforeach
             </select>
             <label for="character-name">Character Name: </label>
