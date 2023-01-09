@@ -142,3 +142,11 @@ body{
     text-decoration: none;
     color: white;
 }
+
+.actordetails {
+    height: 350px;
+}
+
+.actordetails-content {
+    width: 1300px;
+}
