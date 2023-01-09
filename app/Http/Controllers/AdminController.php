@@ -29,7 +29,7 @@ class AdminController extends Controller
         $movie = Movie::find($id);
         $actor = Actor::all();
         $get = Movie::all();
-        return view('admin.details-admin')->with([
+        return view('admin.detail-movie')->with([
             'movies' => $movie,
             'gets' => $get,
             'actors' => $actor,
