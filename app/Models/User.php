@@ -28,7 +28,7 @@ class User extends Authenticatable
             Movie::class,
             'watchlists',
             'user_id',
-            'movies_id',
+            'movie_id',
         );
     }
 

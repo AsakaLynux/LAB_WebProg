@@ -13,7 +13,7 @@ class Movie extends Model
         return $this->belongsToMany(
             User::class,
             'watchlists',
-            'movies_id',
+            'movie_id',
             'user_id',
         );
     }

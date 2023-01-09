@@ -16,7 +16,7 @@ class CreateWatchlistsTable extends Migration
         Schema::create('watchlists', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users');
-            $table->foreignId('movies_id')->references('id')->on('movies');
+            $table->foreignId('movie_id')->references('id')->on('movies');
             $table->string('status');
             $table->timestamps();
         });
