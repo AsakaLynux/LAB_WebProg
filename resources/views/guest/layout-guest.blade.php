@@ -19,7 +19,7 @@
                 <img class="navbar-brand movielogo" src="assets/movielist-logo.png" alt="">
                 <!-- Bagian kanan -->
                 <div class="d-flex navbar-container">
-                    <a class="navbar-text" href="#">Home</a>
+                    <a class="navbar-text" href="/">Home</a>
                     <a class="navbar-text" href="#">Movies</a>
                     <a class="navbar-text" href="#">Actors</a>
                     <a class="btn btn-secondary navbar-content" href="/register" role="button">Register</a>

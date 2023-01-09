@@ -27,8 +27,13 @@ use Illuminate\Support\Facades\Route;
 
 // Auth
 Route::get('/', function () {
+    return view('guest.home-guest');
+});
+
+Route::get('/register', function () {
     return view('register');
 });
+
 Route::post('/register', [AuthController::class, 'register']);
 
 Route::get('/login', function () {
