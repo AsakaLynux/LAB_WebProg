@@ -70,6 +70,9 @@ body{
 .carousel-img {
     filter: brightness(50%);
     box-shadow: inset 0px 0px 10px rgba(0,0,0,0.9);
+    width: 1080px;
+    height: 720px;
+    object-fit: fill;
 }
 
 .popular-img {
