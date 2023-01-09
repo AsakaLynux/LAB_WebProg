@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Actor;
 use App\Models\Genre;
 use App\Models\Movie;
 use Illuminate\Http\Request;
@@ -64,10 +65,32 @@ class MovieController extends Controller
     }
 
     public function update(Request $request) {
+        $movie = Movie::find($request->id_update);
+        $validateData = $request->validate([
+            'title' => 'required|min:2|max:50',
+            'description' => 'required|min:8',
+            'director' => 'required|min:3',
+            'release_date' => 'required',
+            'image_thumbnail' => 'required|mimes:jpeg,jpg,png,gif',
+            'background' => 'required|mimes:jpeg,jpg,png,gif',
+            'character_name' => 'required|array',
+            'genre' => 'required|array',
+            'actor' => 'required|array',
+        ]);
         $fileThumbnail = $request->file('image_thumbnail');
         $fileBackground = $request->file('background');
 
-        $movie = Movie::find($request->id_update);
+
+
+        $movie->title = $validateData['title'];
+        $movie->description = $validateData['description'];
+        $movie->genre = $validateData['genre'];
+        $movie->actor = $validateData['actor'];
+        $movie->character_name = $validateData['character_name'];
+        $movie->director = $validateData['director'];
+        $movie->release_date = $validateData['release_date'];
+        $movie->image_thumbnail = $validateData['image_thumbnail'];
+        $movie->background = $validateData['background'];
 
         if($fileThumbnail != null) {
             $imageNameThumbnail = $request->title.'_thumbnail'.'.'.$fileThumbnail->getClientOriginalExtension();
@@ -113,9 +136,11 @@ class MovieController extends Controller
     public function get_movie_by_id($id) {
         $movie = Movie::find($id);
         $genre = Genre::all();
-        return view('admin.update-movie')->with([
+        $actor = Actor::all();
+        return view('admin.editmovie')->with([
             'movies' => $movie,
             'genres' => $genre,
+            'actors' => $actor,
         ]);
     }
 

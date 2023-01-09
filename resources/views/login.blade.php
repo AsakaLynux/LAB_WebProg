@@ -1,4 +1,4 @@
-@extends('guest.layout-guest')
+@extends('layout.layout-guest')
 
 @section('contents')
 <div class="text-white d-flex justify-content-center p-3"

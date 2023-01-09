@@ -16,11 +16,13 @@
           <h5 class="card-title">Director</h5>
           <p class="card-text">{{$movies->director}}</p>
           <div>
-            <form action="/update-movie/{{$movies->id}}" method="post">
+            <form action="/update-movie/{{$movies->id}}" method="POST">
+                @csrf
                 <input type="submit" class="btn btn-primary" value="Edit">
             </form>
             {{-- <a href="/update-movie/" class="btn btn-primary">Edit</a> --}}
-            <form action="/delete-movie/{{$movies->id}}" method="post">
+            <form action="/delete-movie/{{$movies->id}}" method="POST">
+                @csrf
                 <input type="submit" class="btn btn-danger" value="Delete">
             </form>
           </div>
