@@ -27,7 +27,13 @@ class AdminController extends Controller
 
     public function get_movie_by_id($id) {
         $movie = Movie::find($id);
-        return view('admin.details-admin', ['movies' => $movie]);
+        $actor = Actor::all();
+        $get = Movie::all();
+        return view('admin.details-admin')->with([
+            'movies' => $movie,
+            'gets' => $get,
+            'actors' => $actor,
+        ]);
     }
 
     public function get_actor_by_id($id) {

@@ -20,7 +20,7 @@
                 <img class="navbar-brand movielogo" src="../storage/images/assets/movielist-logo.png" alt="">
                 <!-- Bagian kanan -->
                 <div class="d-flex navbar-container">
-                    <a class="navbar-text" href="#">Home</a>
+                    <a class="navbar-text" href="/admin">Home</a>
                     <a class="navbar-text" href="#">Movies</a>
                     <a class="navbar-text" href="#">Actors</a>
                     <div class="dropdown dropdown-profile rounded-circle">
