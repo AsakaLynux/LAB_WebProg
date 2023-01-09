@@ -65,7 +65,12 @@ class MovieController extends Controller
     }
 
     public function update(Request $request) {
+
+        $fileThumbnail = $request->file('image_thumbnail');
+        $fileBackground = $request->file('background');
+
         $movie = Movie::find($request->id_update);
+
         $validateData = $request->validate([
             'title' => 'required|min:2|max:50',
             'description' => 'required|min:8',
@@ -77,10 +82,6 @@ class MovieController extends Controller
             'genre' => 'required|array',
             'actor' => 'required|array',
         ]);
-        $fileThumbnail = $request->file('image_thumbnail');
-        $fileBackground = $request->file('background');
-
-
 
         $movie->title = $validateData['title'];
         $movie->description = $validateData['description'];
@@ -91,7 +92,6 @@ class MovieController extends Controller
         $movie->release_date = $validateData['release_date'];
         $movie->image_thumbnail = $validateData['image_thumbnail'];
         $movie->background = $validateData['background'];
-
         if($fileThumbnail != null) {
             $imageNameThumbnail = $request->title.'_thumbnail'.'.'.$fileThumbnail->getClientOriginalExtension();
             Storage::putFileAs('public/images/movie/thumbnail/', $fileThumbnail, $imageNameThumbnail);

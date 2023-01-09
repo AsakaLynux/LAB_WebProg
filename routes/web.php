@@ -60,7 +60,7 @@ Route::get('/admin', [AdminController::class, 'get'])->middleware('securityAdmin
 Route::get('/create-movie', [AdminController::class, 'get_genre'])->middleware('securityAdmin');
 Route::post('/create-movie', [MovieController::class, 'create'])->middleware('securityAdmin');
 Route::post('/update-movie', [MovieController::class, 'update'])->middleware('securityAdmin');
-Route::post('/update-movie/{id}', [MovieController::class, 'get_movie_by_id'])->middleware('securityAdmin');
+Route::get('/update-movie/{id}', [MovieController::class, 'get_movie_by_id'])->middleware('securityAdmin');
 Route::get('/detail-movies/{id}', [AdminController::class, 'get_movie_by_id'])->middleware('securityAdmin');
 Route::post('/detail-movies/{id}', [AdminController::class, 'get_movie_by_id'])->middleware('securityAdmin');
 Route::post('/delete-movie/{id}', [MovieController::class, 'delete'])->middleware('securityAdmin');
