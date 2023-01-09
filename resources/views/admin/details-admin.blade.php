@@ -4,7 +4,7 @@
 <div class="card m-5 text-white bg-dark mx-auto" style="max-width: 980px;">
     <div class="row g-0">
       <div class="col-md-4">
-        <img width="300px" src="assets/black-panther-cover.png" class="img-fluid rounded-start" alt="...">
+        <img width="300px" src="../storage/images/assets/black-panther-cover.png" class="img-fluid rounded-start" alt="...">
       </div>
       <div class="col-md-8">
         <div class="card-body">
@@ -27,14 +27,14 @@
     <h5 class="card-title">Cast</h5>
     <div class="d-flex">
         <div class="card bg-dark mt-3 me-3" style="width: 200px;">
-            <img src="assets/michael-b-jordan.jpg" class="img-fluid rounded-start coverpict" alt="...">
+            <img src="../storage/images/assets/michael-b-jordan.jpg" class="img-fluid rounded-start coverpict" alt="...">
             <div class="card-body">
                 <a href="" class="coverlink"><h5>Michael B. Jordan</h5></a>
                 <p class="card-text">Killmonger</p>
             </div>
         </div>
         <div class="card bg-dark mt-3" style="width: 200px;">
-            <img src="assets/lupita-nyongo.jpg" class="img-fluid rounded-start coverpict" alt="...">
+            <img src="../storage/images/assets/lupita-nyongo.jpg" class="img-fluid rounded-start coverpict" alt="...">
             <div class="card-body">
                 <a href="" class="coverlink"><h5>Lupita Nyong'o</h5></a>
                 <p class="card-text">Nakia</p>
@@ -47,17 +47,17 @@
 </div>
 <div class="d-flex justify-content-center">
     <div class="mx-3">
-        <img class="cover-img" src="assets/avatar-cover.png" alt="">
+        <img class="cover-img" src="../storage/images/assets/avatar-cover.png" alt="">
         <a class="cover-text" href=""><h5 class="text-white cover-text">Avatar: The Way of Water</h5></a>
         <p class="text-secondary cover-text">2022</p>
     </div>
     <div class="mx-3">
-        <img class="cover-img" src="assets/glass-onion-cover.png" alt="">
+        <img class="cover-img" src="../storage/images/assets/glass-onion-cover.png" alt="">
         <a class="cover-text" href=""><h5 class="text-white cover-text">Glass Onion: A Knives Out Mystery</h5></a>
         <p class="text-secondary cover-text">2022</p>
     </div>
     <div class="mx-3">
-        <img class="cover-img" src="assets/black-panther-cover.png" alt="">
+        <img class="cover-img" src="../storage/images/assets/black-panther-cover.png" alt="">
         <a class="cover-text" href=""><h5 class="text-white cover-text">Black Panther: Wakanda Forever</h5></a>
         <p class="text-secondary cover-text">2022</p>
     </div>
