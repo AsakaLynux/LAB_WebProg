@@ -18,4 +18,13 @@ class Movie extends Model
         );
     }
 
+    public function actors() {
+        return $this->belongsToMany(
+            Actor::class,
+            'actor_movies',
+            'movie_id',
+            'actor_id',
+        );
+    }
+
 }

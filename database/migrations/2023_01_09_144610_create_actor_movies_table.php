@@ -15,6 +15,8 @@ class CreateActorMoviesTable extends Migration
     {
         Schema::create('actor_movies', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('actor_id')->references('id')->on('actors');
+            $table->foreignId('movie_id')->references('id')->on('movies');
             $table->timestamps();
         });
     }
