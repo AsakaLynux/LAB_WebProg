@@ -16,18 +16,20 @@
         <nav class="navbar navbar-expand-lg bg-dark">
             <div class="container-fluid">
                 <!-- Logonya -->
-                <img class="navbar-brand movielogo" src="assets/movielist-logo.png" alt="">
+                <img class="navbar-brand movielogo" src="storage/images/assets/movielist-logo.png" alt="">
                 <!-- Bagian kanan -->
                 <div class="d-flex navbar-container">
                     <a class="navbar-text" href="#">Home</a>
                     <a class="navbar-text" href="#">Movies</a>
                     <a class="navbar-text" href="#">Actors</a>
                     <div class="dropdown dropdown-profile rounded-circle">
-                        <a class="" href="#" data-bs-toggle="dropdown" data-bs-theme="dark" aria-expanded="false"><img src="assets/profile-pict.jpg" width="40" height="40" class="rounded-circle"></a>
+                        <a class="" href="#" data-bs-toggle="dropdown" data-bs-theme="dark" aria-expanded="false"><img src="storage/images/assets/profile-pict.jpg" width="40" height="40" class="rounded-circle"></a>
                         <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
                           <li><a class="dropdown-item" href="#">Profile</a></li>
                           <li><hr class="dropdown-divider"></li>
-                          <li><a class="dropdown-item" href="/">Log out</a></li>
+                          <li><form action="/logout" method="get">
+                            <input type="submit" value="Log Out" class="dropdown-item">
+                        </form></li>
                         </ul>
                       </div>
                 </div>
@@ -40,22 +42,22 @@
     <footer class="bg-dark text-center text-white mt-5">
         <!-- Logo buat footer -->
         <div>
-            <img class="movielogo-footer" src="assets/movielist-logo.png" alt="">
+            <img class="movielogo-footer" src="storage/images/assets/movielist-logo.png" alt="">
         </div>
         <!-- Logo buat text footer -->
         <div>
-            <img class="footer-movielogo" src="assets/movielist-logo.png" alt="">
+            <img class="footer-movielogo" src="storage/images/assets/movielist-logo.png" alt="">
             is a website that contains list of movie
         </div>
         <!-- text sekaligus link text footer -->
         <div class="d-flex justify-content-center">
-            <a class="footer-text" href="">Privacy Policy</a>
+            <a class="footer-text" href="#">Privacy Policy</a>
             <p class="footer-text">|</p>
-            <a class="footer-text" href="">Terms of Service</a>
+            <a class="footer-text" href="#">Terms of Service</a>
             <p class="footer-text">|</p>
-            <a class="footer-text" href="">Contact Us</a>
+            <a class="footer-text" href="#">Contact Us</a>
             <p class="footer-text">|</p>
-            <a class="footer-text" href="">About Us</a>
+            <a class="footer-text" href="#">About Us</a>
         </div>
         <!-- Copyright footer -->
         <div class="text-center p-3 footer-text" style="background-color: rgba(0, 0, 0, 0.2);">Copyright © 2021<img class="footer-movielogo" src="assets/movielist-logo.png" alt=""></div>
