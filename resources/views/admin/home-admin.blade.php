@@ -52,7 +52,7 @@
         <h2 class="text-white">Show</h2>
     </div>
     <div class="d-flex">
-        <form action="/user" method="get">
+        <form action="/admin" method="get">
 
             <input type="text" name="searchMovie" class="form-control bg-secondary text-white"
                 id="exampleInputEmail1" aria-describedby="emailHelp">

@@ -11,7 +11,7 @@
     <div class="carousel-inner">
         @foreach ($movies as $movie)
         <div class="carousel-item active">
-            <img src="{{$movies->background}}" class="d-block w-100 carousel-img" alt="...">
+            <img src="{{$movie->background}}" class="d-block w-100 carousel-img" alt="...">
             <div class="carousel-caption d-none d-md-block">
               <h1>{{$movie->title}}</h1>
               <h5>{{$movie->release_date}} | {{$movie->genre}}</h5>
@@ -33,7 +33,7 @@
 
 <!-- Popular -->
 <div class="d-flex py-2 px-3 bg-dark">
-    <img class="me-2 pt-2 popular-img" src="assets/flame.png" alt="">
+    <img class="me-2 pt-2 popular-img" src="storage/images/assets/flame.png" alt="">
     <h2 class="text-white">Popular</h2>
 </div>
 <div class="d-flex justify-content-center">
@@ -44,42 +44,28 @@
         <p class="text-secondary cover-text">{{$movie->release_date}}</p>
     </div>
     @endforeach
-    <div class="mx-3">
-        <img class="cover-img" src="assets/avatar-cover.png" alt="">
-        <a class="cover-text" href=""><h5 class="text-white cover-text">Avatar: The Way of Water</h5></a>
-        <p class="text-secondary cover-text">2022</p>
-    </div>
-    <div class="mx-3">
-        <img class="cover-img" src="assets/glass-onion-cover.png" alt="">
-        <a class="cover-text" href=""><h5 class="text-white cover-text">Glass Onion: A Knives Out Mystery</h5></a>
-        <p class="text-secondary cover-text">2022</p>
-    </div>
-    <div class="mx-3">
-        <img class="cover-img" src="assets/black-panther-cover.png" alt="">
-        <a class="cover-text" href=""><h5 class="text-white cover-text">Black Panther: Wakanda Forever</h5></a>
-        <p class="text-secondary cover-text">2022</p>
-    </div>
+
 </div>
 
 <!-- Show -->
 <div class="d-flex py-2 px-3 bg-dark">
     <div class="p-2 d-flex">
-        <img class="me-2 pt-2 show-img" src="assets/film.png" alt="">
+        <img class="me-2 pt-2 show-img" src="storage/images/assets/film.png" alt="">
         <h2 class="text-white">Show</h2>
     </div>
     <div class="d-flex">
-        <label for="" class="form-label text-white me-2">Search</label>
-        <input type="email" class="form-control bg-secondary text-white" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <form action="/" method="get">
+
+            <input type="text" name="searchMovie" class="form-control bg-secondary text-white"
+                id="exampleInputEmail1" aria-describedby="emailHelp">
+            <button type="submit">Search</button>
+        </form>
     </div>
 </div>
 <div class="d-flex justify-content-center mt-3">
-    <a href=""><button class="bg-dark show-btn">Comedy</button></a>
-    <a href=""><button class="bg-dark show-btn">Crime</button></a>
-    <a href=""><button class="bg-dark show-btn">Action</button></a>
-    <a href=""><button class="bg-dark show-btn">Horror</button></a>
-    <a href=""><button class="bg-dark show-btn">Drama</button></a>
-    <a href=""><button class="bg-dark show-btn">Fantasy</button></a>
-    <a href=""><button class="bg-dark show-btn">Family</button></a>
+    @foreach ($genres as $genre)
+    <a href=""><button class="bg-dark show-btn">{{$genre->genre}}</button></a>
+    @endforeach
 </div>
 <div class="d-flex mt-3">
     <p class="mx-3 pt-2 text-white">Sort by</p>
@@ -88,20 +74,12 @@
     <a href=""><button class="bg-dark show-btn">Z - A</button></a>
 </div>
 <div class="d-flex justify-content-center">
+    @foreach ($movies as $movie)
     <div class="mx-3">
-        <img class="cover-img" src="assets/black-panther-cover.png" alt="">
-        <a class="cover-text" href=""><h5 class="text-white cover-text">Black Panther: Wakanda Forever</h5></a>
-        <p class="text-secondary cover-text">2022</p>
+        <img class="cover-img" src="{{$movie->image_thumbnail}}" alt="">
+        <a class="cover-text" href=""><h5 class="text-white cover-text">{{$movie->title}}</h5></a>
+        <p class="text-secondary cover-text">{{$movie->release_date}}</p>
     </div>
-    <div class="mx-3">
-        <img class="cover-img" src="assets/avatar-cover.png" alt="">
-        <a class="cover-text" href=""><h5 class="text-white cover-text">Avatar: The Way of Water</h5></a>
-        <p class="text-secondary cover-text">2022</p>
-    </div>
-    <div class="mx-3">
-        <img class="cover-img" src="assets/glass-onion-cover.png" alt="">
-        <a class="cover-text" href=""><h5 class="text-white cover-text">Glass Onion: A Knives Out Mystery</h5></a>
-        <p class="text-secondary cover-text">2022</p>
-    </div>
+    @endforeach
 </div>
   @endsection

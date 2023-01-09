@@ -3,6 +3,7 @@
 use App\Http\Controllers\ActorController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\GuestController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WatchlistController;
@@ -26,9 +27,7 @@ use Illuminate\Support\Facades\Route;
 
 
 // Auth
-Route::get('/', function () {
-    return view('guest.home-guest');
-});
+Route::get('/', [GuestController::class, 'get']);
 
 Route::get('/register', function () {
     return view('register');
