@@ -18,7 +18,7 @@ class AdminController extends Controller
         // ]);
         $actor = Actor::where("name", "LIKE", "%$request->searchActor%")->paginate()->appends(["search"=>$request->searchActor]);
         $genre = Genre::all();
-        return view('admin.home-admin')->with([
+        return view('admin.home')->with([
             'movies' => $movie,
             'actors' => $actor,
             'genres' => $genre,

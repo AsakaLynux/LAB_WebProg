@@ -1,129 +1,86 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-    <title>Document</title>
-</head>
-<style>
-    table, th, td {
-        border: 1px solid black;
-    }
-    th, td {
-        padding: 5px;
-    }
-    input{
-        margin-top: 8px;
-    }
-</style>
-<body>
-    <h1>Admin Page</h1>
-    <br><a href="/create-movie">Create Movie</a>
-    <br><a href="/create-actor">Create Actor</a>
+@extends('layout.layout-admin')
 
-
-
-    <h1>Movie List</h1>
-
-    <form action="/admin" method="get">
-        <input type="text" name="searchMovie" placeholder="Search....">
-        <button type="submit">Search</button>
-    </form>
-    <form action="/admin" method="get">
-        @foreach ($genres as $genre)
-            <input type="radio" name="genre" value="{{$genre->genre}}">
-            <label>{{$genre->genre}}</label>
+@section("contents")
+<!-- Carousel -->
+<div id="carouselExampleCaptions" class="carousel slide">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        @foreach ($movies as $movie)
+        <div class="carousel-item active">
+            <img src="{{$movie->background}}" class="d-block w-100 carousel-img" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h1>{{$movie->title}}</h1>
+              <h5>{{$movie->release_date}} | {{$movie->genre}}</h5>
+              <p>{{$movie->description}}</p>
+            </div>
+          </div>
         @endforeach
-        <button type="submit">Genre</button>
-        {{-- <button type="submit">Reset</button> --}}
-    </form>
-    <div class="table">
-        <table>
-            <thead>
-                <th>Movie ID</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Genre</th>
-                <th>Actor</th>
-                <th>Character Name</th>
-                <th>Director</th>
-                <th>Release date</th>
-                <th>Image</th>
-                <th>Background</th>
-                <th>Action</th>
-            </thead>
-            <tbody>
-                @foreach ($movies as $movie)
-                   <tr>
-                        <td>{{$movie->id}}</td>
-                        <td>{{$movie->title}}</td>
-                        <td>{{$movie->description}}</td>
-                        <td>{{$movie->genre}}</td>
-                        <td>{{$movie->actor}}</td>
-                        <td>{{$movie->character_name}}</td>
-                        <td>{{$movie->director}}</td>
-                        <td>{{$movie->release_date}}</td>
-                        <td><img width="200px" height="200px" src="{{$movie->image_thumbnail}}" alt=""></td>
-                        <td><img width="200px" height="200px" src="{{$movie->background}}" alt=""></td>
-                        <td>
-                            <form action="/detail-movies/{{$movie->id}}" method="POST">
-                                @csrf
-                                <input type="submit" value="Detail">
-                            </form>
-                        </td>
-                   </tr>
-                @endforeach
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+</div>
 
-            </tbody>
-        </table>
+<!-- Popular -->
+<div class="d-flex py-2 px-3 bg-dark">
+    <img class="me-2 pt-2 popular-img" src="storage/images/assets/flame.png" alt="">
+    <h2 class="text-white">Popular</h2>
+</div>
+<div class="d-flex justify-content-center">
+    @foreach ($movies as $movie)
+    <div class="mx-3">
+        <img class="cover-img" src="{{$movie->image_thumbnail}}" alt="">
+        <a class="cover-text" href="/detail-movies/{{$movie->id}}"><h5 class="text-white cover-text">{{$movie->title}}</h5></a>
+        <p class="text-secondary cover-text">{{$movie->release_date}}</p>
     </div>
-    {{-- {{$movies->links()}} --}}
+    @endforeach
 
+</div>
 
-    <h1>Actor List</h1>
-    <form action="/admin" method="get">
-        <input type="text" name="searchActor" placeholder="Search....">
-        <button type="submit">Search</button>
-    </form>
-    <div class="table">
-        <table>
-            <thead>
-                <th>Actor ID</th>
-                <th>Name</th>
-                <th>Gender</th>
-                <th>Biography</th>
-                <th>Date of Birth</th>
-                <th>Place of Birth</th>
-                <th>popularity</th>
-                <th>Image</th>
-            </thead>
-            <tbody>
-                @foreach ($actors as $actor)
-                   <tr>
-                        <td>{{$actor->id}}</td>
-                        <td>{{$actor->name}}</td>
-                        <td>{{$actor->gender}}</td>
-                        <td>{{$actor->biography}}</td>
-                        <td>{{$actor->place_of_birth}}</td>
-                        <td>{{$actor->popularity}}</td>
-                        <td><img width="200px" height="200px" src="{{$actor->image_url}}" alt=""></td>
-                        <td>
-                            <form action="/detail-actors/{{$actor->id}}" method="POST">
-                                @csrf
-                                <input type="submit" value="Detail">
-                            </form>
-                        </td>
-                   </tr>
-                @endforeach
-
-            </tbody>
-        </table>
+<!-- Show -->
+<div class="d-flex py-2 px-3 bg-dark">
+    <div class="p-2 d-flex">
+        <img class="me-2 pt-2 show-img" src="storage/images/assets/film.png" alt="">
+        <h2 class="text-white">Show</h2>
     </div>
-    <form action="/logout" method="get">
-        <input type="submit" value="LOGOUT">
-    </form>
-</body>
-</html>
+    <div class="d-flex">
+        <form action="/admin" method="get">
+
+            <input type="text" name="searchMovie" class="form-control bg-secondary text-white"
+                id="exampleInputEmail1" aria-describedby="emailHelp">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+</div>
+<div class="d-flex justify-content-center mt-3">
+    @foreach ($genres as $genre)
+        <a href="#"><button class="bg-dark show-btn">{{$genre->genre}}</button></a>
+        @endforeach
+</div>
+<div class="d-flex mt-3">
+    <p class="mx-3 pt-2 text-white">Sort by</p>
+    <a href=""><button class="bg-dark show-btn">Latest</button></a>
+    <a href=""><button class="bg-dark show-btn">A - Z</button></a>
+    <a href=""><button class="bg-dark show-btn">Z - A</button></a>
+</div>
+<div class="d-flex mx-3 mt-3 text-white">
+    <a href="/create-movie"><button class="btn btn-danger"><img width="20" height="20" src="storage/images/assets/plus-btn.png" alt=""> Add Movie</button></a>
+</div>
+<div class="d-flex justify-content-center">
+    @foreach ($movies as $movie)
+    <div class="mx-3">
+        <img class="cover-img" src="{{$movie->image_thumbnail}}" alt="">
+        <a class="cover-text" href="/detail-movies/{{$movie->id}}"><h5 class="text-white cover-text">{{$movie->title}}</h5></a>
+        <p class="text-secondary cover-text">{{$movie->release_date}}</p>
+    </div>
+    @endforeach
+</div>
+  @endsection

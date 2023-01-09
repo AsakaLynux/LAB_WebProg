@@ -25,8 +25,6 @@
                     <div class="dropdown dropdown-profile rounded-circle">
                         <a class="" href="#" data-bs-toggle="dropdown" data-bs-theme="dark" aria-expanded="false"><img src="storage/images/assets/profile-pict.jpg" width="40" height="40" class="rounded-circle"></a>
                         <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
-                          <li><a class="dropdown-item" href="#">Profile</a></li>
-                          <li><hr class="dropdown-divider"></li>
                           <li><form action="/logout" method="get">
                             <input type="submit" value="Log Out" class="dropdown-item">
                         </form></li>
