@@ -43,7 +43,11 @@ class AdminController extends Controller
 
     public function get_genre() {
         $genre = Genre::all();
-        return view('admin.create-movie', ['genres' => $genre]);
+        $actor = Actor::all();
+        return view('admin.create-movie')->with([
+            'genres' => $genre,
+            'actors' => $actor,
+        ]);
     }
 
 }

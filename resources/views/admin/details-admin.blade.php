@@ -31,7 +31,7 @@
             <img src="../{{$actor->image_url}}" class="img-fluid rounded-start coverpict" alt="...">
             <div class="card-body">
                 <a href="" class="coverlink"><h5>{{$actor->name}}</h5></a>
-                {{-- <p class="card-text">Killmonger</p> --}}
+                <p class="card-text">Killmonger</p>
             </div>
         </div>
         @endforeach

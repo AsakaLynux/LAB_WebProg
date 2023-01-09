@@ -26,7 +26,12 @@
     <div class="mb-3">
         <div class="records">
             <label for="actor">Actor: </label>
-            <input type="text" name="actor[]">
+            {{-- <input type="text" name="actor[]"> --}}
+            <select name="actor[]">
+                @foreach ($actors as $actor)
+                    <option value="{{$actor->name}}">{{$actor->name}}</option>
+                @endforeach
+            </select>
             <label for="character-name">Character Name: </label>
             <input type="text" name="character_name[]">
             <a class="extra-fields" href="#">Add More Fields</a>
