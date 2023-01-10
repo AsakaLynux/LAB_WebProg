@@ -46,12 +46,12 @@ Route::get('/logout', [AuthController::class, 'logout']);
 Route::post('/user', [AuthController::class, 'get'])->middleware('securityUser');
 Route::post('/actors', [UserController::class, 'get_actor'])->middleware('securityUser');
 Route::post('/movies', [UserController::class, 'get_movie'])->middleware('securityUser');
-Route::get('/detail-movie/{id}', [UserController::class, 'get_movie_by_id'])->middleware('securityUser');
+Route::post('/detail-movie/{id}', [UserController::class, 'get_movie_by_id'])->middleware('securityUser');
 Route::get('/detail-actor/{id}', [UserController::class, 'get_actor_by_id'])->middleware('securityUser');
 Route::post('/profile/{id}', [UserController::class, 'get_user_by_id'])->middleware('securityUser');
 Route::post('/update-profile/{id}', [AuthController::class, 'get_user_by_id'])->middleware('securityUser');
 Route::post('/update-profile', [AuthController::class, 'update'])->middleware('securityUser');
-Route::get('/watchlist/{id}', [UserController::class, 'get_watchlist_by_id'])->middleware('securityUser');
+Route::post('/watchlist/{id}', [UserController::class, 'get_watchlist_by_id'])->middleware('securityUser');
 Route::post('/add-wathclist', [WatchlistController::class, 'create'])->middleware('securityUser');
 
 // Admin

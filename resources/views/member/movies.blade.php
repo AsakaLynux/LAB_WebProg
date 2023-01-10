@@ -20,9 +20,15 @@
         @foreach ($movies as $movie)
         <div class="mx-3">
             <img class="cover-img" src="{{$movie->image_thumbnail}}" alt="">
-            <a class="cover-text" href="/detail-movie/{{$movie->id}}">
-                <h5 class="text-white cover-text">{{$movie->title}}</h5>
-            </a>
+            <form action="/detail-movie/{{$movie->id}}" method="post">
+                @csrf
+                @foreach ($users as $user)
+                <input type="hidden" name="email" value="{{$user->email}}">
+                @endforeach
+                <button type="submit" class="navbar-text">
+                    <h5>{{$movie->title}}</h5>
+                </button>
+            </form>
             <p class="text-secondary cover-text">{{$movie->release_date}}</p>
         </div>
         @endforeach

@@ -17,8 +17,8 @@
           <p class="card-text">{{$movies->director}}</p>
           <form action="/" method="POST">
             @csrf
-            <input type="hidden" name="user_id" value="{{$user->id}}">
-            <input type="hidden" name="movie_id" value="{{$movie->id}}">
+            {{-- <input type="hidden" name="user_id" value="{{$users->id}}"> --}}
+            <input type="hidden" name="movie_id" value="{{$movies->id}}">
             <button class="btn btn-danger type="submit">Add Watchlist</button>
         </form>
         </div>
@@ -48,7 +48,15 @@
     @foreach ($gets as $getMovie)
     <div class="mx-3">
         <img class="cover-img" src="../{{$getMovie->image_thumbnail}}" alt="">
-        <a class="cover-text" href="/detail-movie/{{$getMovie->id}}"><h5 class="text-white cover-text">{{$getMovie->title}}</h5></a>
+        <form action="/detail-movie/{{$getMovie->id}}" method="post">
+            @csrf
+            @foreach ($users as $user)
+            <input type="hidden" name="email" value="{{$user->email}}">
+            @endforeach
+            <button type="submit" class="navbar-text">
+                <h5>{{$getMovie->title}}</h5>
+            </button>
+        </form>
         <p class="text-secondary cover-text">{{$getMovie->release_date}}</p>
     </div>
     @endforeach

@@ -12,11 +12,13 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
 
-    public function get_movie_by_id($id) {
+    public function get_movie_by_id($id, Request $request) {
         $movie = Movie::find($id);
         $actor = Actor::all();
         $get = Movie::all();
-        $user = User::all();
+        $user = User::query()
+        ->Where('email', 'LIKE', $request->email)
+        ->get();
         return view('member.detail-movie')->with([
             'movies' => $movie,
             'actors' => $actor,

@@ -28,7 +28,7 @@
             <p style="margin-right: 45px">Action</p>
         </div>
         <div class="bg-dark rounded d-flex justify-content-between align-items-center">
-            <img src="assets/avatar-cover.png" width="100" alt="">
+            <img src="../storage/images/assets/avatar-cover.png" width="100" alt="">
             <p class="text-white">Avatar: The Way Of Water</p>
             <p class="status-text">Planning</p>
             <button button type="button" class="me-5 bg-dark action-btn" data-bs-toggle="modal" data-bs-target="#actionModal">...</button>
