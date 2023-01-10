@@ -6,7 +6,7 @@
     <h2 class="text-danger fs-5">Actors</h2>
 </div>
 <div class="text-white rounded p-5">
-    <label for="" class="form-label">Search Actor Address</label>
+    <label for="" class="form-label">Search Actor</label>
     <div class="d-flex">
         <div class="my-auto">
             <form action="/actors" method="get">

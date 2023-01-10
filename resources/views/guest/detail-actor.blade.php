@@ -1,4 +1,4 @@
-@extends('layout.layout-user')
+@extends('layout.layout-guest')
 
 @section('contents')
 <div>
@@ -30,7 +30,7 @@
                 @endforeach
                 <img src="../{{$movie->image_thumbnail}}" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <a class="cover-text" href="/detail-movies/{{$movie->id}}"><p class="text-white cover-text">{{$movie->title}}</p></a>
+                    <a class="cover-text" href="/detail-movis/{{$movie->id}}"><p class="text-white cover-text">{{$movie->title}}</p></a>
                 </div>
               </div>
         </div>

@@ -59,7 +59,7 @@ class GuestController extends Controller
         $actor = Actor::find($id);
         $movie = Movie::query()
         ->where("actor" , "LIKE" , "%$actor->name%")->get();
-        return view('member.detail-actor')->with([
+        return view('guest.detail-actor')->with([
             'actors' => $actor,
             'movies' => $movie,
         ]);

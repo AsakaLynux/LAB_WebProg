@@ -21,7 +21,7 @@
                 <div class="d-flex navbar-container">
                     <a class="navbar-text" href="/">Home</a>
                     <a class="navbar-text" href="/movis">Movies</a>
-                    <a class="navbar-text" href="#">Actors</a>
+                    <a class="navbar-text" href="/actos">Actors</a>
                     <a class="btn btn-secondary navbar-content" href="/register" role="button">Register</a>
                     <a class="btn btn-danger navbar-content" href="/login" role="button">Login</a>
                 </div>
