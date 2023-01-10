@@ -25,16 +25,16 @@
                 <!-- Bagian kanan -->
                 <div class="d-flex navbar-container">
                     @foreach ($users as $user)
-                    <a class="navbar-text" href="#">Home</a>
+                    <a class="navbar-text" href="/user" type="submit">Home</a>
                     <a class="navbar-text" href="#">Movies</a>
-                    <a class="navbar-text" href="#">Actors</a>
-                    <a class="navbar-text" href="{{ url('/watchlist/'.$user->id) }}">Watchlist</a>
+                    <a class="navbar-text" href="/actors">Actors</a>
+                    <a class="navbar-text" href="/watchlist/{{$user->id}}">Watchlist</a>
                     <div class="dropdown dropdown-profile rounded-circle">
                         <a class="" href="#" data-bs-toggle="dropdown" data-bs-theme="dark" aria-expanded="false"><img
                                 src="storage/images/assets/profile-pict.jpg" width="40" height="40"
                                 class="rounded-circle"></a>
                         <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
-                            <li><a class="dropdown-item" href="{{ url('/profile/'.$user->id) }}">Profile</a></li>
+                            <li><a class="dropdown-item" href="/profile/{{$user->id}}">Profile</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>

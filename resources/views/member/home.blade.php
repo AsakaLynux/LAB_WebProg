@@ -1,77 +1,94 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<style>
-    table, th, td {
-        border: 1px solid black
-    }
-    th, td {
-        padding: 5px
-    }
-</style>
-<body>
-    <h1>User Page</h1>
+@extends('layout.layout-user')
 
-    <h1>Movie List</h1>
-
-    <form action="/user" method="get">
-        <input type="text" name="searchMovie" placeholder="Search....">
-        <button type="submit">Search</button>
-    </form>
-    {{-- @foreach ($genres as $genre)
-        <input type="checkbox" value="{{$genre->genre}}">
-        <label>{{$genre->genre}}</label>
-    @endforeach --}}
-    @foreach ($movies as $movie)
-        <h2>{{$movie->id}}</h2>
-        <a href="{{ url('/detail-movie/'.$movie->id) }}"><h2>{{$movie->title}}</h2></a>
-        <img width="200px" height="200px" src="{{$movie->background}}" alt="">
-        <img width="200px" height="200px" src="{{$movie->image_thumbnail}}" alt="">
-
-
-        @foreach ($users as $user)
-            <form action="/add-wathclist" method="POST">
-                @csrf
-                <select name="status">
-                    <option value="Planned">Planned</option>
-                    <option value="Watching">Watching</option>
-                    <option value="Finished">Finished</option>
-                </select>
-                <input type="hidden" name="user_id" value="{{$user->id}}">
-                <input type="hidden" name="movie_id" value="{{$movie->id}}">
-                <button type="submit">Add watchlist</button>
-            </form>
+@section("contents")
+<!-- Carousel -->
+<div id="carouselExampleCaptions" class="carousel slide">
+    <div class="carousel-indicators">
+        @foreach ($movies as $key => $movie)
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{$key}}" class="{{$key == 0 ? 'active' : '' }}"
+        aria-current="{{$key == 0 ? 'true' : '' }}"></button>
+        @endforeach
+    </div>
+    <div class="carousel-inner">
+        @foreach ($movies as $key => $movie)
+        <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
+            <img src="{{$movie->background}}" class="d-block w-100 carousel-img" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h1>{{$movie->title}}</h1>
+                <h5>{{$movie->release_date}} | {{$movie->genre}}</h5>
+                <p>{{$movie->description}}</p>
+            </div>
+        </div>
         @endforeach
 
-    @endforeach
-    {{-- {{$movies->links()}} --}}
 
-    <h1>Actor List</h1>
-    @foreach ($actor as $actor)
-        <h2>{{$actor->id}}</h2>
-        <a href="{{ url('/detail-actor/'.$actor->id) }}"><h2>{{$actor->name}}</h2></a>
-        <img width="200px" height="200px" src="{{$actor->image_url}}" alt="">
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
 
+    <!-- Popular -->
+    <div class="d-flex py-2 px-3 bg-dark">
+        <img class="me-2 pt-2 popular-img" src="storage/images/assets/flame.png" alt="">
+        <h2 class="text-white">Popular</h2>
+    </div>
+    <div class="d-flex justify-content-center">
 
-    @endforeach
+        @foreach ($movies as $movie)
+        <div class="mx-3">
+            <img class="cover-img" src="{{$movie->image_thumbnail}}" alt="">
+            <a class="cover-text" href="{{ url('/detail-movie/'.$movie->id) }}">
+                <h5 class="text-white cover-text">{{$movie->title}}</h5>
+            </a>
+            <p class="text-secondary cover-text">{{$movie->release_date}}</p>
+        </div>
+        @endforeach
+    </div>
 
-    <form action="/logout" method="get">
-        <input type="submit" value="LOGOUT">
-    </form>
+    <!-- Show -->
+    <div class="d-flex py-2 px-3 bg-dark">
+        <div class="p-2 d-flex">
+            <img class="me-2 pt-2 show-img" src="storage/images/assets/film.png" alt="">
+            <h2 class="text-white">Show</h2>
+        </div>
+        <div class="d-flex">
+            <form action="/user" method="get">
 
-    @foreach ($users as $user)
+                <input type="text" name="searchMovie" class="form-control bg-secondary text-white"
+                    id="exampleInputEmail1" aria-describedby="emailHelp">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center mt-3">
+        @foreach ($genres as $genre)
+        <a href="#"><button class="bg-dark show-btn">{{$genre->genre}}</button></a>
+        @endforeach
 
-        <h2>{{$user->id}}</h2>
+    </div>
+    <div class="d-flex mt-3">
+        <p class="mx-3 pt-2 text-white">Sort by</p>
+        <a href="#"><button class="bg-dark show-btn">Latest</button></a>
+        <a href="#"><button class="bg-dark show-btn">A - Z</button></a>
+        <a href="#"><button class="bg-dark show-btn">Z - A</button></a>
+    </div>
+    <div class="d-flex justify-content-center">
+        @foreach ($movies as $movie)
+        <div class="mx-3">
+            <img class="cover-img" src="{{$movie->image_thumbnail}}" alt="">
+            <a class="cover-text" href="{{ url('/detail-movie/'.$movie->id) }}">
+                <h5 class="text-white cover-text">{{$movie->title}}</h5>
+            </a>
+            <p class="text-secondary cover-text">{{$movie->release_date}}</p>
+        </div>
+        @endforeach
+    </div>
 
-        <a href="{{ url('/profile/'.$user->id) }}">Profile</a>
-        <a href="{{ url('/watchlist/'.$user->id) }}">Watchlist</a>
-    @endforeach
-
-
-</body>
-</html>
+    @endsection

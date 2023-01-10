@@ -50,7 +50,7 @@
     @foreach ($gets as $getMovie)
     <div class="mx-3">
         <img class="cover-img" src="../{{$getMovie->image_thumbnail}}" alt="">
-        <a class="cover-text" href=""><h5 class="text-white cover-text">{{$getMovie->title}}</h5></a>
+        <a class="cover-text" href="/detail-movies/{{$getMovie->id}}"><h5 class="text-white cover-text">{{$getMovie->title}}</h5></a>
         <p class="text-secondary cover-text">{{$getMovie->release_date}}</p>
     </div>
     @endforeach

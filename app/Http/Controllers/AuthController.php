@@ -84,7 +84,7 @@ class AuthController extends Controller
             $movie = Movie::all();
             $actor = Actor::all();
             $genre = Genre::all();
-            return view('member.home-user')->with([
+            return view('member.home')->with([
                 'movies' => $movie,
                 'users' => $users,
                 'actors' => $actor,
@@ -110,14 +110,6 @@ class AuthController extends Controller
     public function update(Request $request) {
 
         $user = User::find($request->id_update);
-
-        // $validateData = $request->validate([
-        //     'username' => 'unique:users,username|nullable',
-        //     'email' => 'unique:users,email|nullable',
-        // ]);
-
-        // $user->username = $validateData['username'];
-        // $user->email = $validateData['email'];
 
 
         $fileProfile = $request->file('image');
@@ -151,7 +143,8 @@ class AuthController extends Controller
         $genre = Genre::all();
         $movie = Movie::where("title", "LIKE", "%$request->searchMovie%")->paginate()->appends(["search"=>$request->searchMovie]);
         $actor = Actor::all();
-        return view('member.home-user')->with([
+
+        return view('member.home')->with([
             'movies' => $movie,
             'actors' => $actor,
             'users' => $user,
