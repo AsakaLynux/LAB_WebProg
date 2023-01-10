@@ -154,3 +154,26 @@ body{
     width: 1300px;
 }
 
+.modal-header {
+    border: none;
+    margin-top: 0;
+}
+
+.modal-footer {
+    border: none;
+    margin-bottom: 0;
+}
+
+.filter-btn {
+    width: 100px;
+}
+
+.action-btn {
+    border: none;
+    color: white;
+}
+
+.status-text {
+    color: greenyellow;
+}
+
