@@ -22,10 +22,13 @@ body{
 
 .navbar-text {
     color:white;
-    padding: 2% 0;
-    margin: 0 3%;
+    padding: 6px 0;
+    margin: 0 5px;
     text-decoration: none;
     transition: all .5s;
+    outline: none;
+    background: transparent;
+    border: 1px solid transparent;
 }
 
 .navbar-text:hover{

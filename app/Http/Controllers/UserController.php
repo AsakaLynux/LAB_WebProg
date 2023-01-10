@@ -16,10 +16,12 @@ class UserController extends Controller
         $movie = Movie::find($id);
         $actor = Actor::all();
         $get = Movie::all();
+        $user = User::all();
         return view('member.detail-movie')->with([
             'movies' => $movie,
             'actors' => $actor,
             'gets' => $get,
+            'users' => $user,
         ]);
     }
 
@@ -33,9 +35,11 @@ class UserController extends Controller
         ]);
     }
 
-    public function get_user_by_id($id) {
-        $user = User::find($id);
-        return view('member.profile', ['user' => $user]);
+    public function get_user_by_id(Request $request) {
+        $user = User::query()
+        ->Where('email', 'LIKE', $request->email)
+        ->get();
+        return view('member.profile', ['users' => $user]);
     }
 
     public function get_watchlist_by_id($id) {

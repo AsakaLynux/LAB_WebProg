@@ -90,9 +90,12 @@ class AuthController extends Controller
         return redirect('/login');
     }
 
-    public function get_user_by_id($id) {
-        $user = User::find($id);
-        return view('member.update-profile', ['user' => $user]);
+    public function get_user_by_id(Request $request) {
+        // $user = User::find($id);
+        $user = User::query()
+        ->Where('email', 'LIKE', $request->email)
+        ->get();
+        return view('member.update-profile', ['users' => $user]);
     }
 
     public function update(Request $request) {
@@ -119,7 +122,11 @@ class AuthController extends Controller
 
         $user->save();
 
-        return redirect("/profile/$request->id_update");
+        $user = User::query()
+        ->Where('email', 'LIKE', $request->email)
+        ->get();
+        return view('member.profile', ['users' => $user]);
+        // return redirect("/profile/$request->id_update");
 
 
     }

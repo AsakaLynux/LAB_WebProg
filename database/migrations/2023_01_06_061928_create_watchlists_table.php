@@ -17,7 +17,7 @@ class CreateWatchlistsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users');
             $table->foreignId('movie_id')->references('id')->on('movies');
-            $table->string('status');
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

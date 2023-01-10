@@ -15,6 +15,12 @@
           <p class="card-text">{{$movies->description}}</p>
           <h5 class="card-title">Director</h5>
           <p class="card-text">{{$movies->director}}</p>
+          <form action="/" method="POST">
+            @csrf
+            <input type="hidden" name="user_id" value="{{$user->id}}">
+            <input type="hidden" name="movie_id" value="{{$movie->id}}">
+            <button class="btn btn-danger type="submit">Add Watchlist</button>
+        </form>
         </div>
       </div>
     </div>
