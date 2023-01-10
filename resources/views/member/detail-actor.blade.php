@@ -26,12 +26,12 @@
             <h5>Known For</h5>
             <div class="card bg-dark" style="width: 150px; height: 300px">
                 @foreach ($movies as $movie)
-
-                @endforeach
                 <img src="../{{$movie->image_thumbnail}}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <a class="cover-text" href="/detail-movies/{{$movie->id}}"><p class="text-white cover-text">{{$movie->title}}</p></a>
                 </div>
+                @endforeach
+
               </div>
         </div>
     </div>

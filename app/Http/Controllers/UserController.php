@@ -27,13 +27,18 @@ class UserController extends Controller
         ]);
     }
 
-    public function get_actor_by_id($id) {
+    public function get_actor_by_id($id, Request $request) {
         $actor = Actor::find($id);
         $movie = Movie::query()
         ->where("actor" , "LIKE" , "%$actor->name%")->get();
+        // dd($movie);
+        $user = User::query()
+        ->Where('email', 'LIKE', $request->email)
+        ->get();
         return view('member.detail-actor')->with([
             'actors' => $actor,
             'movies' => $movie,
+            'users' => $user,
         ]);
     }
 
