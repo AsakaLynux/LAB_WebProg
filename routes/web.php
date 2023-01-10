@@ -78,6 +78,10 @@ Route::post('/delete-actor/{id}', [ActorController::class, 'delete'])->middlewar
 
 // Guest
 
+// Movie
+Route::get('movis', [GuestController::class, 'get_movie']);
+Route::get('/detail-movis/{id}', [GuestController::class, 'get_movie_by_id']);
+
 
 
 
