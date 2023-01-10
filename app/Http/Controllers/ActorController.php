@@ -80,6 +80,6 @@ class ActorController extends Controller
 
     public function get_actor_by_id($id) {
         $actor = Actor::find($id);
-        return view('admin.editactor', ['actor' => $actor]);
+        return view('admin.update-actor', ['actor' => $actor]);
     }
 }
