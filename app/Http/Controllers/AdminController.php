@@ -35,7 +35,12 @@ class AdminController extends Controller
 
     public function get_actor_by_id($id) {
         $actor = Actor::find($id);
-        return view('admin.detail-actor', ['actor' => $actor]);
+        $movie = Movie::query()
+        ->where("actor" , "LIKE" , "%$actor->name%")->get();
+        return view('admin.detail-actor')->with([
+            'actors' => $actor,
+            'movies' => $movie,
+        ]);
     }
 
     public function get_genre() {
@@ -53,7 +58,7 @@ class AdminController extends Controller
         ]);
         $actor = Actor::where("name", "LIKE", "%$request->searchActor%")->paginate()->appends(["search"=>$request->searchActor]);
         $genre = Genre::all();
-        return view('admin.actors-admin')->with([
+        return view('admin.actor-admin')->with([
             'movies' => $movie,
             'actors' => $actor,
             'genres' => $genre,

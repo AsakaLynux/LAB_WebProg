@@ -62,7 +62,6 @@ Route::post('/create-movie', [MovieController::class, 'create'])->middleware('se
 Route::post('/update-movie', [MovieController::class, 'update'])->middleware('securityAdmin');
 Route::get('/update-movie/{id}', [MovieController::class, 'get_movie_by_id'])->middleware('securityAdmin');
 Route::get('/detail-movies/{id}', [AdminController::class, 'get_movie_by_id'])->middleware('securityAdmin');
-Route::post('/detail-movies/{id}', [AdminController::class, 'get_movie_by_id'])->middleware('securityAdmin');
 Route::post('/delete-movie/{id}', [MovieController::class, 'delete'])->middleware('securityAdmin');
 
 // Actor
@@ -71,10 +70,9 @@ Route::get('/create-actor', function() {
     return view('admin.addActor');
 })->middleware('securityAdmin');
 Route::post('/create-actor', [ActorController::class, 'create'])->middleware('securityAdmin');
-Route::post('/update-actor/{id}', [ActorController::class, 'get_actor_by_id'])->middleware('securityAdmin');
+Route::get('/update-actor/{id}', [ActorController::class, 'get_actor_by_id'])->middleware('securityAdmin');
 Route::post('/update-actor', [ActorController::class, 'update'])->middleware('securityAdmin');
 Route::get('/detail-actors/{id}', [AdminController::class, 'get_actor_by_id'])->middleware('securityAdmin');
-Route::post('/detail-actors/{id}', [AdminController::class, 'get_actor_by_id'])->middleware('securityAdmin');
 Route::post('/delete-actor/{id}', [ActorController::class, 'delete'])->middleware('securityAdmin');
 
 // Guest
