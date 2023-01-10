@@ -45,6 +45,7 @@ Route::get('/logout', [AuthController::class, 'logout']);
 // member
 Route::get('/user', [AuthController::class, 'get'])->middleware('securityUser');
 Route::get('/actors', [UserController::class, 'get_actor']);
+Route::get('/movies', [UserController::class, 'get_movie']);
 Route::get('/detail-movie/{id}', [UserController::class, 'get_movie_by_id']);
 Route::get('/detail-actor/{id}', [UserController::class, 'get_actor_by_id']);
 Route::get('/profile/{id}', [UserController::class, 'get_user_by_id']);

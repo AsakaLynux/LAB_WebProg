@@ -51,18 +51,24 @@ class UserController extends Controller
     }
 
     public function get_actor(Request $request) {
-        $movie = Movie::query()->where("title", "LIKE", "%$request->searchMovie%", "or" ,"genre", "LIKE", "%$request->genre%")->paginate()->appends([
-            "search"=>$request->searchMovie,
-        ]);
         $actor = Actor::where("name", "LIKE", "%$request->searchActor%")->paginate()->appends(["search"=>$request->searchActor]);
-        $genre = Genre::all();
         $user = User::query()
         ->Where('email', 'LIKE', $request->email)
         ->get();
-        return view('member.actors-user')->with([
-            'movies' => $movie,
+        return view('member.actors')->with([
             'users' => $user,
             'actors' => $actor,
+        ]);
+    }
+
+    public function get_movie(Request $request) {
+        $movie = Movie::where("title", "LIKE", "%$request->searchMovie%")->paginate()->appends(["search"=>$request->searchMovie]);
+        $user = User::query()
+        ->Where('email', 'LIKE', $request->email)
+        ->get();
+        return view('member.movies')->with([
+            'users' => $user,
+            'movies' => $movie,
         ]);
     }
 

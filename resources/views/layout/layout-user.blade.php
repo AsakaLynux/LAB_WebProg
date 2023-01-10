@@ -26,7 +26,7 @@
                 <div class="d-flex navbar-container">
                     @foreach ($users as $user)
                     <a class="navbar-text" href="/user" type="submit">Home</a>
-                    <a class="navbar-text" href="#">Movies</a>
+                    <a class="navbar-text" href="/movies">Movies</a>
                     <a class="navbar-text" href="/actors">Actors</a>
                     <a class="navbar-text" href="/watchlist/{{$user->id}}">Watchlist</a>
                     <div class="dropdown dropdown-profile rounded-circle">
