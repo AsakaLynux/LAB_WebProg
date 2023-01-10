@@ -13,7 +13,7 @@
                 <input type="text" class="form-control bg-dark text-white my-auto" name="searchActor" id="" aria-describedby="">
                 <button type="submit">Search</button>
             </div >
-            <a href="" class="btn btn-danger my-auto mx-3">Add Actor</a>
+            <a href="/create-actor" class="btn btn-danger my-auto mx-3">Add Actor</a>
         </div>
 
     </form>

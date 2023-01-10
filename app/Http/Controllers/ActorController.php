@@ -43,7 +43,7 @@ class ActorController extends Controller
 
         $actor->save();
 
-        return redirect('/admin');
+        return redirect('/actor');
     }
 
     public function update(Request $request) {
