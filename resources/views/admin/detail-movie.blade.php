@@ -34,7 +34,7 @@
         <div class="card bg-dark mt-3 me-3" style="width: 200px;">
             <img src="../{{$actor->image_url}}" class="img-fluid rounded-start coverpict" alt="...">
             <div class="card-body">
-                <a href="" class="coverlink"><h5>{{$actor->name}}</h5></a>
+                <a href="/detail-actors/{{$actor->id}}" class="coverlink"><h5>{{$actor->name}}</h5></a>
                 <p class="card-text">Killmonger</p>
             </div>
         </div>
