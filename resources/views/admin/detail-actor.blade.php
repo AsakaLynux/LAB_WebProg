@@ -21,8 +21,12 @@
             <div class="d-flex justify-content-between">
                 <h1>{{$actors->name}}</h1>
                 <div>
-                    <a class="btn btn-danger" href=""><img src="../storage/images/assets/pencil-icon.png" style="height: 15px; width: 15px;" alt=""></a>
-                    <a class="btn btn-danger" href=""><img src="../storage/images/assets/trashcan-icon.png" style="height: 15px; width: 15px;" alt=""></a>
+                    <a class="btn btn-danger" href="/update-actor/{{$actors->id}}"><img src="../storage/images/assets/pencil-icon.png" style="height: 15px; width: 15px;" alt=""></a>
+                    <form action="/delete-actor/{{$actors->id}}" method="POST">
+                        @csrf
+                        <button class="btn btn-danger type="submit"><img src="../storage/images/assets/trashcan-icon.png" style="height: 15px; width: 15px;" alt=""></button>
+                    </form>
+
                 </div>
             </div>
             <h3>Biography</h3>

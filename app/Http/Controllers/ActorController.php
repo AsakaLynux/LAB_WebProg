@@ -76,7 +76,7 @@ class ActorController extends Controller
         $actor = Actor::find($id);
         Storage::delete("public/images/actor/".$actor->image_url);
         $actor->delete();
-        return redirect('/admin');
+        return redirect('/actor');
     }
 
     public function get_actor_by_id($id) {
