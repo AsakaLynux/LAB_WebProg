@@ -66,6 +66,7 @@ Route::post('/detail-movies/{id}', [AdminController::class, 'get_movie_by_id'])-
 Route::post('/delete-movie/{id}', [MovieController::class, 'delete'])->middleware('securityAdmin');
 
 // Actor
+Route::get('/actor', [AdminController::class, 'get_actor'])->middleware('securityAdmin');
 Route::get('/create-actor', function() {
     return view('admin.create-actor');
 })->middleware('securityAdmin');

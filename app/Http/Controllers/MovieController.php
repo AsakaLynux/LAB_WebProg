@@ -137,7 +137,7 @@ class MovieController extends Controller
         $movie = Movie::find($id);
         $genre = Genre::all();
         $actor = Actor::all();
-        return view('admin.editmovie')->with([
+        return view('admin.update-movie')->with([
             'movies' => $movie,
             'genres' => $genre,
             'actors' => $actor,
