@@ -31,6 +31,16 @@
 
     @yield('contents')
 
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul class="mb-0">
+            @foreach ($errors->all() as $error)
+                <li>{{$error}}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
     <footer class="bg-dark text-center text-white mt-5">
         <!-- Logo buat footer -->
         <div>

@@ -31,18 +31,6 @@ class AuthController extends Controller
         $user->email = $validateData['email'];
         $user->password = $validateData['password'];
 
-        // $fileProfile = $request->file('profile');
-        // $imageNameProfile = $request->name.$fileProfile->getClientOriginalExtension();
-        // Storage::putFileAs('public/images/user/', $fileProfile, $imageNameProfile);
-        // $imageNameProfile = 'storage/images/user/, '. $imageNameProfile;
-        // $fileProfile = $request->image_url;
-        // if($fileProfile != null) {
-        //     $imageNameProfile = $request->name.$fileProfile->getClientOriginalExtension();
-        //     Storage::putFileAs('public/images/user/', $fileProfile, $imageNameProfile);
-        //     $imageNameProfile = 'storage/images/user/, '. $imageNameProfile;
-        //     $user->image_url = $imageNameProfile;
-        // }
-
         $user->username = $request->username;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);

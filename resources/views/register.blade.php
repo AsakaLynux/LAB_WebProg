@@ -1,4 +1,4 @@
-@extends('guest.layout-guest')
+@extends('layout.layout-guest')
 
 @section('contents')
 <div class="text-white d-flex justify-content-center p-3">
@@ -6,6 +6,7 @@
 </div>
 <div class="d-flex justify-content-center">
     <form class="text-white form-width bg-dark rounded p-3" action="/register" method="POST">
+        @csrf
         <div class="mb-3">
             <label for="" class="form-label">Username</label>
             <input type="username" name="username" class="form-control bg-secondary text-white" id="exampleInputUsername1" aria-describedby="emailHelp">
