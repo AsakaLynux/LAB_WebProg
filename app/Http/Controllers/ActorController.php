@@ -50,7 +50,6 @@ class ActorController extends Controller
         $fileActor = $request->file('image');
         $actor = Actor::find($request->id_update);
 
-
         if($fileActor != null) {
             $imageNameActor = $request->name.'.'.$fileActor->getClientOriginalExtension();
             Storage::putFileAs('public/images/actor/', $fileActor, $imageNameActor);
@@ -81,6 +80,6 @@ class ActorController extends Controller
 
     public function get_actor_by_id($id) {
         $actor = Actor::find($id);
-        return view('admin.update-actor', ['actor' => $actor]);
+        return view('admin.editactor', ['actor' => $actor]);
     }
 }
