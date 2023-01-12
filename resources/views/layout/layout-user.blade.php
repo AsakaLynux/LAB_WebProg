@@ -45,17 +45,13 @@
                         <input type="hidden" name="email" value="{{$user->email}}">
                         <button type="submit" class="navbar-text">Watchlist</button>
                     </form>
-                    {{-- <a class="navbar-text" href="/movies">Movies</a> --}}
-                    {{-- <a class="navbar-text" href="/actors">Actors</a>
-                    <a class="navbar-text" href="/watchlist/{{$user->id}}">Watchlist</a> --}}
                     <div class="dropdown dropdown-profile rounded-circle">
                         <a class="" href="#" data-bs-toggle="dropdown" data-bs-theme="dark" aria-expanded="false"><img
                                 src="../{{$user->image_url != null ? $user->image_url : '../storage/images/assets/profile-pict.jpg'}}" width="40" height="40"
                                 class="rounded-circle"></a>
                         <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
-                            {{-- <li><a class="dropdown-item" href="/profile/{{$user->id}}">Profile</a></li> --}}
                             <li>
-                                <form action="/profile/{{$user->id}}" method="post">
+                                <form action="/update-profile/{{$user->id}}" method="post">
                                 @csrf
                                 <input type="hidden" name="email" value="{{$user->email}}">
                                 <input type="submit" value="Profile" class="dropdown-item">
