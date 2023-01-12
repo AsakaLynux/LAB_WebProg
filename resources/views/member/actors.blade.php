@@ -9,10 +9,14 @@
     <label for="" class="form-label">Search Actor</label>
     <div class="d-flex">
         <div class="my-auto">
-            <form action="/actors" method="get">
+            @foreach ($users as $user)
+            <form action="/actors" method="post">
+                @csrf
+                <input type="hidden" name="email" value="{{$user->email}}">
                 <input type="text" name="searchActor" class="form-control bg-dark text-white my-auto" id="" aria-describedby="">
                 <input type="submit" value="Search">
             </form>
+            @endforeach
 
         </div >
     </div>

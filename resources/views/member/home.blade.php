@@ -65,12 +65,16 @@
             <h2 class="text-white">Show</h2>
         </div>
         <div class="d-flex">
-            <form action="/user" method="get">
-
+            @foreach ($users as $user)
+            <form action="/user" method="post">
+                @csrf
+                <input type="hidden" name="email" value="{{$user->email}}">
                 <input type="text" name="searchMovie" class="form-control bg-secondary text-white"
                     id="exampleInputEmail1" aria-describedby="emailHelp">
                 <button type="submit">Search</button>
             </form>
+            @endforeach
+
         </div>
     </div>
     <div class="d-flex justify-content-center mt-3">
