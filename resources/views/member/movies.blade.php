@@ -22,6 +22,7 @@
             <img class="cover-img" src="{{$movie->image_thumbnail}}" alt="">
             <form action="/detail-movie/{{$movie->id}}" method="post">
                 @csrf
+                <input type="hidden" name="movie_id" value="{{$movie->id}}">
                 @foreach ($users as $user)
                 <input type="hidden" name="email" value="{{$user->email}}">
                 @endforeach

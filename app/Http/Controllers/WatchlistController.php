@@ -16,14 +16,10 @@ class WatchlistController extends Controller
     public function create(Request $request) {
         $watchlist = new Watchlist();
 
-        $validateData = $request->validate([
-            'status' => 'required',
-        ]);
 
-        $watchlist->status = $validateData['status'];
 
-        $watchlist->movies_id = $request->movie_id;
-        $watchlist->status = $request->status;
+        $watchlist->movie_id = $request->movie_id;
+        // $watchlist->status = $request->status;
         $watchlist->user_id = $request->user_id;
 
         $watchlist->save();

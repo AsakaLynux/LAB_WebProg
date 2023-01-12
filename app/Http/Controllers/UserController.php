@@ -19,11 +19,14 @@ class UserController extends Controller
         $user = User::query()
         ->Where('email', 'LIKE', $request->email)
         ->get();
+        $watchlist = Watchlist::query()->where("movie_id" , "LIKE" , "%$request->movie_id%" , "and" , "user_id" , "LIKE" , "%$request->user_id%")->first();
+        // dd($watchlist);
         return view('member.detail-movie')->with([
             'movies' => $movie,
             'actors' => $actor,
             'gets' => $get,
             'users' => $user,
+            'watchlists' => $watchlist,
         ]);
     }
 

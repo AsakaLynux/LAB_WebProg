@@ -3,26 +3,29 @@
 @section('contents')
 <div class="card m-5 text-white bg-dark mx-auto" style="max-width: 980px;">
     <div class="row g-0">
-      <div class="col-md-4">
-        <img width="300px" src="../{{$movies->image_thumbnail}}" class="img-fluid rounded-start" alt="...">
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h3 class="card-title">{{$movies->title}}</h3>
-          <p class="card-text">{{$movies->genre}}</p>
-          <p class="card-text">Release Date {{$movies->release_date}}</p>
-          <h5 class="card-title">Storyline</h5>
-          <p class="card-text">{{$movies->description}}</p>
-          <h5 class="card-title">Director</h5>
-          <p class="card-text">{{$movies->director}}</p>
-          <form action="/" method="POST">
-            @csrf
-            {{-- <input type="hidden" name="user_id" value="{{$users->id}}"> --}}
-            <input type="hidden" name="movie_id" value="{{$movies->id}}">
-            <button class="btn btn-danger type="submit">Add Watchlist</button>
-        </form>
+        <div class="col-md-4">
+            <img width="300px" src="../{{$movies->image_thumbnail}}" class="img-fluid rounded-start" alt="...">
         </div>
-      </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h3 class="card-title">{{$movies->title}}</h3>
+                <p class="card-text">{{$movies->genre}}</p>
+                <p class="card-text">Release Date {{$movies->release_date}}</p>
+                <h5 class="card-title">Storyline</h5>
+                <p class="card-text">{{$movies->description}}</p>
+                <h5 class="card-title">Director</h5>
+                <p class="card-text">{{$movies->director}}</p>
+                @foreach ($users as $user)
+
+                <form action="/add-wathclist" method="POST">
+                    @csrf
+                    <input type="hidden" name="user_id" value="{{$user->id}}">
+                    <input type="hidden" name="movie_id" value="{{$movies->id}}">
+                    <button class="btn btn-danger" type="submit">Add Watchlist</button>
+                </form>
+                @endforeach
+            </div>
+        </div>
     </div>
 </div>
 <div class="text-white mx-auto" style="max-width: 980px;">
