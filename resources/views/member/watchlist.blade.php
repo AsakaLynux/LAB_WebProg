@@ -15,9 +15,9 @@
             <div class="mb-3 filter-btn">
                 <select class="form-select bg-dark text-secondary" aria-label="Default select example">
                     <option selected>All</option>
-                    <option value="1">Planned</option>
-                    <option value="2">Watching</option>
-                    <option value="3">Finished</option>
+                    <option value="Planned">Planned</option>
+                    <option value="Watching">Watching</option>
+                    <option value="Finished">Finished</option>
                 </select>
             </div>
         </div>
@@ -27,12 +27,22 @@
             <p style="margin-left: 150px">Status</p>
             <p style="margin-right: 45px">Action</p>
         </div>
+        @foreach ($movies as $movie)
         <div class="bg-dark rounded d-flex justify-content-between align-items-center">
-            <img src="../storage/images/assets/avatar-cover.png" width="100" alt="">
-            <p class="text-white">Avatar: The Way Of Water</p>
+            <img src="../{{$movie->image_thumbnail}}" width="100" alt="">
+            <p class="text-white">{{$movie->title}}</p>
             <p class="status-text">Planning</p>
             <button button type="button" class="me-5 bg-dark action-btn" data-bs-toggle="modal" data-bs-target="#actionModal">...</button>
         </div>
+
+        @endforeach
+        @foreach ($watchlists as $watchlist)
+        <div class="bg-dark rounded d-flex justify-content-between align-items-center">
+            <p class="status-text">{{$watchlist->status}}</p>
+            <button button type="button" class="me-5 bg-dark action-btn" data-bs-toggle="modal" data-bs-target="#actionModal">...</button>
+        </div>
+
+
     </div>
 </div>
 <div class="modal fade" id="actionModal" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
@@ -42,21 +52,30 @@
               <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <div class="mb-3 filter-btn">
-                    <select class="form-select bg-secondary text-white" aria-label="Default select example">
-                        <option selected>All</option>
-                        <option value="1">Planned</option>
-                        <option value="2">Watching</option>
-                        <option value="3">Finished</option>
-                    </select>
+            @foreach ($users as $user)
+            <form action="/update-wathclist/{{$watchlist->id}}" method="POST">
+                @csrf
+                <div class="modal-body">
+                    <div class="mb-3 filter-btn">
+                        <input type="hidden" name="email" value="{{$user->email}}">
+                        <select class="form-select bg-secondary text-white" name="status" aria-label="Default select example">
+                            <option selected>All</option>
+                            <option value="Planned">Planned</option>
+                            <option value="Watching">Watching</option>
+                            <option value="Finished">Finished</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-danger">Save changes</button>
-            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger">Save changes</button>
+                  </div>
+            @endforeach
+
+            </form>
+
           </div>
     </div>
 </div>
+@endforeach
 @endsection

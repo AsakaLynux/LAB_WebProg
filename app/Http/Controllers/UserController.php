@@ -52,15 +52,20 @@ class UserController extends Controller
         return view('member.profile', ['users' => $user]);
     }
 
-    public function get_watchlist_by_id($id) {
+    public function get_watchlist_by_id($id, Request $request) {
         $watchlist = Watchlist::query()
         ->Where('user_id', 'LIKE', $id)
         ->get();
-        $user = User::find($id)->movies;
-        // dd($user);
+        // $user = User::find($id)->movies;
+        $user = User::query()
+        ->Where('email', 'LIKE', $request->email)
+        ->get();
+        $movie = User::find($id)->movies;
+        // dd($movie);
         return view('member.watchlist')->with([
             'watchlists' => $watchlist,
             'users' => $user,
+            'movies' => $movie,
         ]);
     }
 

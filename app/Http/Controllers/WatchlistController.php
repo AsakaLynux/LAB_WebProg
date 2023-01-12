@@ -38,4 +38,14 @@ class WatchlistController extends Controller
         ]);
     }
 
+    public function update($id, Request $request) {
+        $watchlist = Watchlist::find($id);
+
+        $watchlist->status = $request->status != null ? $request->status : $watchlist->status;
+
+        $watchlist->save();
+
+        return redirect('/user');
+    }
+
 }

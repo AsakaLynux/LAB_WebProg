@@ -53,6 +53,7 @@ Route::post('/update-profile/{id}', [AuthController::class, 'get_user_by_id'])->
 Route::post('/update-profile', [AuthController::class, 'update'])->middleware('securityUser');
 Route::post('/watchlist/{id}', [UserController::class, 'get_watchlist_by_id'])->middleware('securityUser');
 Route::post('/add-wathclist', [WatchlistController::class, 'create'])->middleware('securityUser');
+Route::post('/update-wathclist/{id}', [WatchlistController::class, 'update'])->middleware('securityUser');
 
 // Admin
 Route::get('/admin', [AdminController::class, 'get'])->middleware('securityAdmin');
